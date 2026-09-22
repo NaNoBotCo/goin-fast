@@ -1,0 +1,248 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The reckoner — four speed calculators</title><meta name="description" content="How fast you are moving sitting still, what air drag costs at any speed, how two near-light speeds add, and how much a moving clock loses."><link rel="canonical" href="https://nanobotco.github.io/goin-fast/reckoner/"><link rel="icon" href="/goin-fast/icon.svg" type="image/svg+xml"><meta property="og:title" content="The reckoner — four speed calculators"><meta property="og:description" content="How fast you are moving sitting still, what air drag costs at any speed, how two near-light speeds add, and how much a moving clock loses."><meta property="og:type" content="article"><meta property="og:url" content="https://nanobotco.github.io/goin-fast/reckoner/"><meta name="author" content="Nan · hongdam.net"><style>
+:root{
+ --ink:#17120e; --paper:#f6efe3; --panel:#fffaf0; --line:#d8c9ae;
+ --accent:#b7222a; --accent2:#e08a1e; --muted:#6a5c48;
+ --display:"Bebas Neue","Oswald","Haettenschweiler","Arial Narrow",system-ui,sans-serif;
+ --body:Georgia,"Iowan Old Style","Times New Roman",serif;
+ --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+ :root{--ink:#f0e6d6; --paper:#12100e; --panel:#1b1714; --line:#3a3128;
+       --accent:#ef4b4b; --accent2:#f0b04a; --muted:#a6947c;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+ font-size:19px;line-height:1.62}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.1rem}
+a{color:var(--accent);text-underline-offset:.16em}
+a:hover{color:var(--accent2)}
+
+header.top{border-bottom:4px solid var(--accent);background:var(--panel)}
+header.top .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1rem;align-items:baseline;
+ padding-top:.7rem;padding-bottom:.7rem}
+header.top .mark{font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;
+ text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+header.top .mark b{color:var(--accent)}
+nav.site{display:flex;flex-wrap:wrap;gap:.1rem .9rem;font-family:var(--display);
+ font-size:1rem;letter-spacing:.08em;text-transform:uppercase}
+nav.site a{text-decoration:none}
+nav.site a[aria-current]{color:var(--ink);border-bottom:3px solid var(--accent2)}
+
+h1{font-family:var(--display);font-size:clamp(2.6rem,10vw,4.6rem);line-height:.92;
+ letter-spacing:.01em;text-transform:uppercase;margin:1.6rem 0 .3rem}
+h1 .sub{display:block;font-family:var(--body);font-size:clamp(1rem,3vw,1.25rem);
+ text-transform:none;letter-spacing:0;color:var(--muted);line-height:1.4;
+ margin-top:.6rem;font-style:italic}
+h2{font-family:var(--display);font-size:clamp(1.7rem,5.5vw,2.4rem);line-height:1;
+ text-transform:uppercase;letter-spacing:.02em;margin:2.4rem 0 .6rem;
+ border-bottom:2px solid var(--line);padding-bottom:.3rem}
+h3{font-family:var(--display);font-size:1.35rem;text-transform:uppercase;
+ letter-spacing:.04em;margin:1.8rem 0 .3rem}
+p{margin:.85rem 0}
+.lede{font-size:1.16rem}
+.lede:first-letter{font-family:var(--display);float:left;font-size:3.1em;line-height:.78;
+ padding:.06em .09em 0 0;color:var(--accent)}
+
+.pull{font-family:var(--display);font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.04;
+ text-transform:uppercase;color:var(--accent);border-left:6px solid var(--accent2);
+ padding:.2rem 0 .2rem 1rem;margin:1.8rem 0}
+
+.box{background:var(--panel);border:2px solid var(--line);border-left:8px solid var(--accent2);
+ padding:.9rem 1.1rem;margin:1.5rem 0}
+.box h3{margin-top:.2rem}
+.box.sum{border-left-color:var(--accent)}
+.fig{margin:1.7rem 0}
+.fig .canvas{overflow-x:auto;border:2px solid var(--line);background:var(--panel)}
+.fig svg{width:100%;min-width:640px;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--muted);margin-top:.45rem}
+figure{margin:1.7rem 0}
+
+table{border-collapse:collapse;width:100%;font-size:.94rem;margin:1.2rem 0}
+th,td{border:1px solid var(--line);padding:.36rem .5rem;text-align:left;vertical-align:top}
+th{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;
+ font-weight:400;font-size:1rem;background:var(--panel)}
+td.n{text-align:right;font-family:var(--mono);font-size:.86rem;white-space:nowrap}
+.scroll{overflow-x:auto}
+
+ol.rungs{list-style:none;padding:0;margin:1.4rem 0;counter-reset:rung}
+ol.rungs li{border-top:1px solid var(--line);padding:.9rem 0;display:grid;
+ grid-template-columns:5.6rem 1fr;gap:.2rem .9rem}
+ol.rungs li:last-child{border-bottom:1px solid var(--line)}
+ol.rungs .v{font-family:var(--mono);font-size:.84rem;color:var(--accent);
+ text-align:right;padding-top:.35rem;line-height:1.35}
+ol.rungs .v b{display:block;font-family:var(--display);font-size:1.45rem;color:var(--ink);
+ letter-spacing:.02em}
+ol.rungs h3{margin:0}
+ol.rungs p{margin:.25rem 0 0}
+ol.rungs .show{font-size:.84rem;color:var(--muted);font-family:var(--mono)}
+
+.calc{background:var(--panel);border:2px solid var(--line);padding:1rem 1.1rem;margin:1.6rem 0}
+.calc label{display:block;font-family:var(--display);text-transform:uppercase;
+ letter-spacing:.06em;font-size:.95rem;margin:.7rem 0 .15rem}
+.calc input,.calc select{font:inherit;font-family:var(--mono);font-size:.95rem;
+ padding:.35rem .5rem;border:2px solid var(--line);background:var(--paper);
+ color:var(--ink);width:100%;max-width:18rem}
+.calc input[type=range]{padding:0;border:0;max-width:100%}
+.calc .out{font-family:var(--display);font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.06;
+ color:var(--accent);margin:.8rem 0 .1rem;word-break:break-word}
+.calc .out small{display:block;font-family:var(--body);font-size:.95rem;font-style:italic;
+ color:var(--muted);line-height:1.4;margin-top:.35rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.2rem 1.4rem}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;
+ margin:1.6rem 0;padding:0;list-style:none}
+.cards li{border:2px solid var(--line);background:var(--panel);padding:.8rem .9rem}
+.cards h3{margin:.1rem 0 .3rem}
+.cards h3 a{text-decoration:none}
+.cards p{margin:.2rem 0 0;font-size:.95rem}
+
+.src{font-size:.82rem;color:var(--muted)}
+sup.ref a{text-decoration:none;font-family:var(--mono);font-size:.74em;
+ padding:0 .12em;color:var(--accent)}
+ol.sources{font-size:.92rem}
+ol.sources li{margin:.55rem 0}
+
+footer.foot{margin-top:3.5rem;border-top:4px solid var(--accent);background:var(--panel);
+ padding:1.3rem 0 2.2rem;font-size:.88rem;color:var(--muted)}
+footer.foot a{color:var(--accent)}
+footer.foot .fleet{margin-top:.6rem;line-height:1.9}
+footer.foot .support,footer.foot .maker{margin-top:.5rem}
+.prev-next{display:flex;justify-content:space-between;gap:1rem;margin:2.6rem 0 0;
+ font-family:var(--display);text-transform:uppercase;letter-spacing:.05em}
+.prev-next a{text-decoration:none}
+
+@media (max-width:30rem){
+ body{font-size:18px}
+ ol.rungs li{grid-template-columns:1fr}
+ ol.rungs .v{text-align:left;padding-top:0}
+ ol.rungs .v b{display:inline;font-size:1.25rem;margin-right:.5rem}
+}
+@media print{nav.site,.calc{display:none}body{background:#fff;color:#000}}
+</style></head><body><header class="top"><div class="wrap"><a class="mark" href="/goin-fast/">GOIN' <b>FAST</b></a><nav class="site"><a href="/goin-fast/">Home</a><a href="/goin-fast/ladder/">The ladder</a><a href="/goin-fast/sound/">Sound</a><a href="/goin-fast/drag/">Air</a><a href="/goin-fast/orbit/">Orbit</a><a href="/goin-fast/limit/">The limit</a><a href="/goin-fast/cheats/">Cheats</a><a href="/goin-fast/reckoner/" aria-current="page">Reckoner</a><a href="/goin-fast/sources/">Sources</a></nav></div></header><main class="wrap">
+<h1>The reckoner<span class="sub">Four calculators. They run in the page — the
+arithmetic is printed under each one so you can check it on paper.</span></h1>
+
+<div class="calc" id="still">
+<h3>How fast are you goin' settin' still?</h3>
+<label for="lat">Your latitude, degrees (Nashville 36, Chiang Mai 18.8, Reykjavík 64)</label>
+<input id="lat" type="number" value="36" min="-90" max="90" step="0.1">
+<div class="out" id="still-out"></div>
+</div>
+
+<div class="calc" id="air">
+<h3>What the air is costin' you</h3>
+<div class="grid2">
+<div><label for="v">Speed, mph</label><input id="v" type="number" value="70" min="1" max="800"></div>
+<div><label for="cd">Drag coefficient</label>
+<select id="cd"><option value="0.40">pickup, 0.40</option>
+<option value="0.32">SUV, 0.32</option><option value="0.27">sedan, 0.27</option>
+<option value="0.24">slick sedan, 0.24</option><option value="0.90">motorcycle + rider, 0.90</option>
+<option value="0.05">record streamliner, 0.05</option></select></div>
+<div><label for="area">Frontal area, m²</label><input id="area" type="number" value="3.0" step="0.1" min="0.1"></div>
+<div><label for="alt">Altitude, m</label><input id="alt" type="number" value="0" step="100" min="0" max="20000"></div>
+</div>
+<div class="out" id="air-out"></div>
+</div>
+
+<div class="calc" id="add">
+<h3>Addin' two speeds, the correct way</h3>
+<label for="u">First, as a fraction of light speed</label>
+<input id="u" type="range" min="0" max="1" step="0.001" value="0.75">
+<label for="w">Second, as a fraction of light speed</label>
+<input id="w" type="range" min="0" max="1" step="0.001" value="0.75">
+<div class="out" id="add-out"></div>
+</div>
+
+<div class="calc" id="clock">
+<h3>How slow does the watch run?</h3>
+<label for="b">Speed, as a fraction of light speed</label>
+<input id="b" type="range" min="0" max="0.999999" step="0.000001" value="0.5">
+<div class="out" id="clock-out"></div>
+</div>
+
+<div class="box">
+<h3>Where these come from</h3>
+<p>The porch speed is the circumference of your line of latitude divided by a sidereal
+day, plus the Earth's orbit, plus the Sun's trip around the galaxy — each one measured
+against a different thing, which is the point of the first page.</p>
+<p>The air cost is P = ½ρv³C<sub>d</sub>A with ρ falling off by the standard
+atmosphere. It is the air only: tyres, driveline and hills are on top.</p>
+<p>The other two are (u+v)/(1+uv/c²) and γ = 1/√(1−v²/c²), which is the whole of
+<a href="/goin-fast/limit/">the ceilin'</a> in two lines.</p>
+</div>
+
+<script>/* reckoner.js — the four calculators. Same formulas as tools/figures.py, printed
+   under each box so a reader can check them on paper. No storage, no network. */
+(function () {
+  "use strict";
+  var C = 299792458, MPH = 0.44704, G = 6.6743e-11, M = 5.9722e24;
+  var RE = 6378137, SIDEREAL = 86164.0905;          // equatorial radius, sidereal day
+
+  function $(id) { return document.getElementById(id); }
+  function n(v, d) { return v.toLocaleString(undefined, { maximumFractionDigits: d === undefined ? 0 : d }); }
+  function on(el, f) { if (!el) return; el.addEventListener("input", f); f(); }
+
+  /* 1 — settin' still */
+  var lat = $("lat");
+  on(lat, function () {
+    var phi = Math.max(-90, Math.min(90, parseFloat(lat.value) || 0)) * Math.PI / 180;
+    var spin = 2 * Math.PI * RE * Math.cos(phi) / SIDEREAL;
+    var orbit = 29780, galaxy = 230000;
+    $("still-out").innerHTML =
+      n(spin) + " m/s on the spin" +
+      "<small>" + n(spin / MPH) + " mph, eastward, and you cannot feel a bit of it. " +
+      "On top of that: " + n(orbit) + " m/s around the Sun and about " + n(galaxy) +
+      " m/s around the middle of the galaxy — three speeds, three different things " +
+      "to be fast compared to. Add them and you get " + n(spin + orbit + galaxy) +
+      " m/s, which is " + (100 * (spin + orbit + galaxy) / C).toFixed(3) +
+      "% of light speed, for doin' nothing whatsoever.</small>";
+  });
+
+  /* 2 — the air tax */
+  function air() {
+    var v = (parseFloat($("v").value) || 0) * MPH;
+    var cd = parseFloat($("cd").value), A = parseFloat($("area").value) || 0.1;
+    var alt = Math.max(0, parseFloat($("alt").value) || 0);
+    var rho = 1.225 * Math.pow(1 - 2.25577e-5 * alt, 4.2559);   // standard atmosphere
+    var F = 0.5 * rho * v * v * cd * A, P = F * v;
+    var half = 0.5 * rho * Math.pow(v / 2, 2) * cd * A * (v / 2);
+    $("air-out").innerHTML =
+      n(P / 745.7, 1) + " hp, on air alone" +
+      "<small>" + n(F) + " newtons of shove — about " + n(F / 9.81) + " kg hangin' off " +
+      "the bumper — and " + n(P / 1000, 1) + " kW to keep it there. " +
+      "At half this speed the same shape costs " + n(half / 745.7, 1) + " hp, which is " +
+      n(P / half, 1) + " times less. Air is " + rho.toFixed(3) + " kg/m³ at this height. " +
+      "Tyres, driveline and hills are extra.</small>";
+  }
+  ["v", "cd", "area", "alt"].forEach(function (id) { on($(id), air); });
+
+  /* 3 — addin' speeds */
+  function add() {
+    var u = parseFloat($("u").value), w = parseFloat($("w").value);
+    var s = (u + w) / (1 + u * w);
+    $("add-out").innerHTML =
+      s.toFixed(6) + "c" +
+      "<small>" + u.toFixed(3) + "c and " + w.toFixed(3) + "c. Plain arithmetic says " +
+      (u + w).toFixed(3) + "c" + (u + w > 1 ? ", which is over the ceilin' and does not happen" : "") +
+      ". The correct sum is (u+v)/(1+uv/c²) = " + s.toFixed(6) + "c — that is " +
+      n(s * C) + " m/s. Push both sliders all the way and it still lands on 1.</small>";
+  }
+  on($("u"), add); on($("w"), add);
+
+  /* 4 — the watch */
+  function clock() {
+    var b = parseFloat($("b").value), g = 1 / Math.sqrt(1 - b * b);
+    var yearSec = 31557600, lost = yearSec - yearSec / g;
+    $("clock-out").innerHTML =
+      "×" + g.toFixed(6) + " slower" +
+      "<small>At " + b.toFixed(6) + "c — " + n(b * C) + " m/s — a year on the porch is " +
+      (1 / g).toFixed(6) + " years in the cab. You come home " +
+      (lost > 86400 ? n(lost / 86400, 1) + " days" : n(lost, 1) + " seconds") +
+      " younger than the folks who stayed. Gettin' a 2,000 kg truck to this speed takes " +
+      ((g - 1) * 2000 * C * C).toExponential(2) + " joules.</small>";
+  }
+  on($("b"), clock);
+})();
+</script>
+<div class="prev-next"><a href="/goin-fast/cheats/">← Cheats</a><a href="/goin-fast/sources/">Sources →</a></div></main><footer class="foot"><div class="wrap"><p>Goin' Fast — twenty measured speeds and what each one costs. Text and diagrams by Nan, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; the code that builds them, <a href="https://github.com/NaNoBotCo/goin-fast">MIT</a>. Built 2026-09-22. Every figure on this site was computed from the formula shown beside it.</p><div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div><div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div><div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div></div></footer></body></html>

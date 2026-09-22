@@ -1,0 +1,53 @@
+# Goin' Fast
+
+> A plain-spoken explainer about speed: twenty measured speeds from continental drift to
+> light, what each one costs, and where the limit is. Text and diagrams CC BY 4.0, code MIT.
+
+Site: https://nanobotco.github.io/goin-fast/
+Repository: https://github.com/NaNoBotCo/goin-fast
+Built: 2026-09-22
+
+## Pages
+- Home: https://nanobotco.github.io/goin-fast/
+- The ladder: https://nanobotco.github.io/goin-fast/ladder/
+- Sound: https://nanobotco.github.io/goin-fast/sound/
+- Air: https://nanobotco.github.io/goin-fast/drag/
+- Orbit: https://nanobotco.github.io/goin-fast/orbit/
+- The limit: https://nanobotco.github.io/goin-fast/limit/
+- Cheats: https://nanobotco.github.io/goin-fast/cheats/
+- Reckoner: https://nanobotco.github.io/goin-fast/reckoner/
+- Sources: https://nanobotco.github.io/goin-fast/sources/
+
+## The ladder, in metres per second
+- The ground under the house: 7.9e-10 m/s (2.5 cm a year ÷ 31,557,600 s)
+- A racin' snail: 0.00275 m/s (13 in (0.330 m) in 2 min (120 s))
+- A body walkin': 1.2 m/s (3.5 ft/s, the figure the crosswalk timer is set by)
+- Usain Bolt, flat out: 12.27 m/s (peak over the 60–80 m split; the whole 100 m averaged 10.44 m/s)
+- A cheetah, hunting: 25.9 m/s (measured on wild cheetahs wearin' a collar, in the hunt)
+- Pickup on the interstate: 31.3 m/s (70 mph × 0.44704)
+- A peregrine, stooping: 108 m/s (242 mph, clocked off a skydiver's meter)
+- ThrustSSC, on the salt: 341.1 m/s (763.035 mph, two runs inside an hour, averaged)
+- Sound, in the air out front: 343 m/s (dry air at 20 °C; colder air is slower)
+- The tip of a bullwhip: 686 m/s (about twice the speed of sound at the tip)
+- A .30-06, leavin' the muzzle: 853 m/s (2,800 ft/s, 150-grain factory load)
+- An SR-71, in a straight line: 980.4 m/s (3,529.56 km/h, the standin' record for an air-breathin' aeroplane)
+- The X-15, with the rocket lit: 2021 m/s (Mach 6.7, 4,520 mph)
+- The space station, goin' around: 7660 m/s (√(GM/r) at 420 km up)
+- Quittin' the Earth entirely: 11186 m/s (√(2GM/R) at the ground, air not counted)
+- Voyager 1, still leavin': 17000 m/s (about 61,000 km/h away from the Sun)
+- This whole planet, orbitin': 29780 m/s (the Earth's mean orbital speed)
+- The Parker Solar Probe, at the bottom: 192000 m/s (about 692,000 km/h at closest approach, 24 December 2024)
+- The Sun, haulin' the lot of us: 230000 m/s (around the centre of the Milky Way)
+- Light: 2.99792e+08 m/s (exact, by definition)
+
+## Computed here, not looked up
+Orbital speed at 420 km: 7661.3 m/s. Escape from the surface:
+11186.2 m/s. Orbital period: 92.82 min. Equatorial
+spin: 465.10 m/s. Drag power for Cd 0.40 / 3 m²: 2.38 hp at
+30 mph, 19.02 at 60, 45.09 at 80. gamma at 0.99c: 7.0888.
+Kinetic energy of 2000 kg at 0.99c: 1.094e+21 J. 0.75c + 0.75c = 0.9600c.
+Mach cone half-angle at Mach 1.5: 41.810 degrees.
+
+## Terms
+Text, diagrams and data: CC BY 4.0, credit "Nan · hongdam.net · CC BY 4.0" with a link
+to https://nanobotco.github.io/goin-fast/. Code: MIT.

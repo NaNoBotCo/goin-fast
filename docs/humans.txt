@@ -1,0 +1,7 @@
+/* the people */
+Built by Nan · hongdam.net · Chiang Rai
+Contact: nan@motdang.net
+
+/* the site */
+Static HTML, no framework. Diagrams drawn by tools/figures.py from the formulas they show.
+Last built: 2026-09-22

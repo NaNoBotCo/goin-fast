@@ -1,0 +1,22 @@
+Goin' Fast — what is in this repository, and under what terms.
+
+CODE — tools/, js/, tests/, publish.sh
+    SPDX-License-Identifier: MIT — see LICENSE-CODE.
+
+TEXT AND DIAGRAMS — the pages in docs/, the SVGs in docs/img/, README.md
+    SPDX-License-Identifier: CC-BY-4.0 — see LICENSE. Credit line: "Nan · hongdam.net ·
+    CC BY 4.0", with a link to https://nanobotco.github.io/goin-fast/ .
+    The six diagrams were computed by tools/figures.py from the formulas they show.
+    None is traced from, or a copy of, anyone else's image.
+
+DATA — data/ladder.json, data/sources.json
+    SPDX-License-Identifier: CC-BY-4.0. The speeds are measurements published by others;
+    the source of each is named in the file and linked on the sources page. Where a rung
+    is arithmetic off a published figure, the arithmetic is printed with it.
+
+CITED MATERIAL
+    Papers, fact sheets and record certifications are cited by number on the sources page
+    and linked. Nothing is quoted at length.
+
+ROSTER — data/fleet.json, tools/fleet.py
+    The publisher's list of sites, copied from the index repository.

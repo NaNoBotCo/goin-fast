@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "Goin' Fast: a plain-spoken explainer about speed"
+message: "If you use these diagrams, numbers or text, cite as below and keep the credit line."
+type: software
+authors:
+  - name: "Nan"
+    website: "https://hongdam.net"
+repository-code: "https://github.com/NaNoBotCo/goin-fast"
+url: "https://nanobotco.github.io/goin-fast/"
+license: CC-BY-4.0
+date-released: "2026-09-22"
+keywords:
+  - speed
+  - physics
+  - sound barrier
+  - aerodynamic drag
+  - orbital mechanics
+  - special relativity
+  - time dilation
+  - science explainer

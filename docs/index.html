@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Goin&#x27; Fast — a plain-spoken explainer about speed</title><meta name="description" content="Twenty measured speeds from continental drift to light, the three things that make going fast cost, and four calculators. Every figure computed from the formula shown."><link rel="canonical" href="https://nanobotco.github.io/goin-fast/"><link rel="icon" href="/goin-fast/icon.svg" type="image/svg+xml"><meta property="og:title" content="Goin&#x27; Fast — a plain-spoken explainer about speed"><meta property="og:description" content="Twenty measured speeds from continental drift to light, the three things that make going fast cost, and four calculators. Every figure computed from the formula shown."><meta property="og:type" content="article"><meta property="og:url" content="https://nanobotco.github.io/goin-fast/"><meta name="author" content="Nan · hongdam.net"><style>
+:root{
+ --ink:#17120e; --paper:#f6efe3; --panel:#fffaf0; --line:#d8c9ae;
+ --accent:#b7222a; --accent2:#e08a1e; --muted:#6a5c48;
+ --display:"Bebas Neue","Oswald","Haettenschweiler","Arial Narrow",system-ui,sans-serif;
+ --body:Georgia,"Iowan Old Style","Times New Roman",serif;
+ --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+ :root{--ink:#f0e6d6; --paper:#12100e; --panel:#1b1714; --line:#3a3128;
+       --accent:#ef4b4b; --accent2:#f0b04a; --muted:#a6947c;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+ font-size:19px;line-height:1.62}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.1rem}
+a{color:var(--accent);text-underline-offset:.16em}
+a:hover{color:var(--accent2)}
+
+header.top{border-bottom:4px solid var(--accent);background:var(--panel)}
+header.top .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1rem;align-items:baseline;
+ padding-top:.7rem;padding-bottom:.7rem}
+header.top .mark{font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;
+ text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+header.top .mark b{color:var(--accent)}
+nav.site{display:flex;flex-wrap:wrap;gap:.1rem .9rem;font-family:var(--display);
+ font-size:1rem;letter-spacing:.08em;text-transform:uppercase}
+nav.site a{text-decoration:none}
+nav.site a[aria-current]{color:var(--ink);border-bottom:3px solid var(--accent2)}
+
+h1{font-family:var(--display);font-size:clamp(2.6rem,10vw,4.6rem);line-height:.92;
+ letter-spacing:.01em;text-transform:uppercase;margin:1.6rem 0 .3rem}
+h1 .sub{display:block;font-family:var(--body);font-size:clamp(1rem,3vw,1.25rem);
+ text-transform:none;letter-spacing:0;color:var(--muted);line-height:1.4;
+ margin-top:.6rem;font-style:italic}
+h2{font-family:var(--display);font-size:clamp(1.7rem,5.5vw,2.4rem);line-height:1;
+ text-transform:uppercase;letter-spacing:.02em;margin:2.4rem 0 .6rem;
+ border-bottom:2px solid var(--line);padding-bottom:.3rem}
+h3{font-family:var(--display);font-size:1.35rem;text-transform:uppercase;
+ letter-spacing:.04em;margin:1.8rem 0 .3rem}
+p{margin:.85rem 0}
+.lede{font-size:1.16rem}
+.lede:first-letter{font-family:var(--display);float:left;font-size:3.1em;line-height:.78;
+ padding:.06em .09em 0 0;color:var(--accent)}
+
+.pull{font-family:var(--display);font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.04;
+ text-transform:uppercase;color:var(--accent);border-left:6px solid var(--accent2);
+ padding:.2rem 0 .2rem 1rem;margin:1.8rem 0}
+
+.box{background:var(--panel);border:2px solid var(--line);border-left:8px solid var(--accent2);
+ padding:.9rem 1.1rem;margin:1.5rem 0}
+.box h3{margin-top:.2rem}
+.box.sum{border-left-color:var(--accent)}
+.fig{margin:1.7rem 0}
+.fig .canvas{overflow-x:auto;border:2px solid var(--line);background:var(--panel)}
+.fig svg{width:100%;min-width:640px;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--muted);margin-top:.45rem}
+figure{margin:1.7rem 0}
+
+table{border-collapse:collapse;width:100%;font-size:.94rem;margin:1.2rem 0}
+th,td{border:1px solid var(--line);padding:.36rem .5rem;text-align:left;vertical-align:top}
+th{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;
+ font-weight:400;font-size:1rem;background:var(--panel)}
+td.n{text-align:right;font-family:var(--mono);font-size:.86rem;white-space:nowrap}
+.scroll{overflow-x:auto}
+
+ol.rungs{list-style:none;padding:0;margin:1.4rem 0;counter-reset:rung}
+ol.rungs li{border-top:1px solid var(--line);padding:.9rem 0;display:grid;
+ grid-template-columns:5.6rem 1fr;gap:.2rem .9rem}
+ol.rungs li:last-child{border-bottom:1px solid var(--line)}
+ol.rungs .v{font-family:var(--mono);font-size:.84rem;color:var(--accent);
+ text-align:right;padding-top:.35rem;line-height:1.35}
+ol.rungs .v b{display:block;font-family:var(--display);font-size:1.45rem;color:var(--ink);
+ letter-spacing:.02em}
+ol.rungs h3{margin:0}
+ol.rungs p{margin:.25rem 0 0}
+ol.rungs .show{font-size:.84rem;color:var(--muted);font-family:var(--mono)}
+
+.calc{background:var(--panel);border:2px solid var(--line);padding:1rem 1.1rem;margin:1.6rem 0}
+.calc label{display:block;font-family:var(--display);text-transform:uppercase;
+ letter-spacing:.06em;font-size:.95rem;margin:.7rem 0 .15rem}
+.calc input,.calc select{font:inherit;font-family:var(--mono);font-size:.95rem;
+ padding:.35rem .5rem;border:2px solid var(--line);background:var(--paper);
+ color:var(--ink);width:100%;max-width:18rem}
+.calc input[type=range]{padding:0;border:0;max-width:100%}
+.calc .out{font-family:var(--display);font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.06;
+ color:var(--accent);margin:.8rem 0 .1rem;word-break:break-word}
+.calc .out small{display:block;font-family:var(--body);font-size:.95rem;font-style:italic;
+ color:var(--muted);line-height:1.4;margin-top:.35rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.2rem 1.4rem}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;
+ margin:1.6rem 0;padding:0;list-style:none}
+.cards li{border:2px solid var(--line);background:var(--panel);padding:.8rem .9rem}
+.cards h3{margin:.1rem 0 .3rem}
+.cards h3 a{text-decoration:none}
+.cards p{margin:.2rem 0 0;font-size:.95rem}
+
+.src{font-size:.82rem;color:var(--muted)}
+sup.ref a{text-decoration:none;font-family:var(--mono);font-size:.74em;
+ padding:0 .12em;color:var(--accent)}
+ol.sources{font-size:.92rem}
+ol.sources li{margin:.55rem 0}
+
+footer.foot{margin-top:3.5rem;border-top:4px solid var(--accent);background:var(--panel);
+ padding:1.3rem 0 2.2rem;font-size:.88rem;color:var(--muted)}
+footer.foot a{color:var(--accent)}
+footer.foot .fleet{margin-top:.6rem;line-height:1.9}
+footer.foot .support,footer.foot .maker{margin-top:.5rem}
+.prev-next{display:flex;justify-content:space-between;gap:1rem;margin:2.6rem 0 0;
+ font-family:var(--display);text-transform:uppercase;letter-spacing:.05em}
+.prev-next a{text-decoration:none}
+
+@media (max-width:30rem){
+ body{font-size:18px}
+ ol.rungs li{grid-template-columns:1fr}
+ ol.rungs .v{text-align:left;padding-top:0}
+ ol.rungs .v b{display:inline;font-size:1.25rem;margin-right:.5rem}
+}
+@media print{nav.site,.calc{display:none}body{background:#fff;color:#000}}
+</style></head><body><header class="top"><div class="wrap"><a class="mark" href="/goin-fast/">GOIN' <b>FAST</b></a><nav class="site"><a href="/goin-fast/" aria-current="page">Home</a><a href="/goin-fast/ladder/">The ladder</a><a href="/goin-fast/sound/">Sound</a><a href="/goin-fast/drag/">Air</a><a href="/goin-fast/orbit/">Orbit</a><a href="/goin-fast/limit/">The limit</a><a href="/goin-fast/cheats/">Cheats</a><a href="/goin-fast/reckoner/">Reckoner</a><a href="/goin-fast/sources/">Sources</a></nav></div></header><main class="wrap">
+<h1>Goin' Fast<span class="sub">Really, super, duper, extra fast — twenty measured
+speeds from the ground under the house to light itself, what each one costs, and where
+the ceilin' is.</span></h1>
+
+<div class="box sum" id="short">
+<h3>The whole thing, dirt simple</h3>
+<p>1. Fast is always fast <em>compared to somethin'</em>. Pick the somethin' first.</p>
+<p>2. Holdin' a speed is free. Changin' it costs.</p>
+<p>3. Air fights back harder the faster you go — a lot harder.</p>
+<p>4. Orbit ain't up. Orbit is sideways, fast enough to keep missin' the ground.</p>
+<p>5. There is a top speed. Light. 299,792,458 metres a second.</p>
+<p>6. Get near it and your speed quits climbin' — your <em>watch</em> slows down
+instead. That part is measured, not argued.</p>
+<p>That is the whole page. The rest is the fun part.</p>
+</div>
+
+<p class="lede">Fast ain't a thing you own. It's a thing you are, compared to somethin'
+else. Set still on the porch with a glass of tea and you are already doin'
+465.101 m/s on the spin of the Earth<sup class="ref">[<a href="/goin-fast/sources/#nasa-earth" title="NASA NSSDCA, Earth fact sheet">15</a>]</sup> — 1,040 mph, out at the
+equator — and 29,780 m/s around the Sun, and about 230 kilometres every second around
+the middle of the galaxy. The tea does not slosh. Nothin' hurts. Y'all been haulin'
+this whole time.</p>
+
+<p>That is the first thing about speed and it is the thing that trips people up: a speed
+is measured against somethin', and you get to pick. The trooper picks the road. The bird
+picks the air. The physicist picks whatever makes the arithmetic shortest.</p>
+
+<p class="pull">Speed is free. It's the <em>changin'</em> of it that costs.</p>
+
+<p>Sittin' at 29,780 metres a second costs nothin' — no fuel, no noise, no wind in your
+hair. What costs is gettin' from one speed to another, and what you have to shove out of
+the way while you do it. Three bills come due, in this order:</p>
+
+<div class="box sum">
+<h3>The three bills</h3>
+<p><b>Air.</b> Push through it twice as fast and it pushes back four times as hard, and
+you spend eight times the horsepower doin' it. <a href="/goin-fast/drag/">The cube law</a>
+is why your truck drinks at eighty.</p>
+<p><b>Ground.</b> To quit fallin' on it you have to go sideways fast enough to keep
+missin' it — 7,661.31 m/s at the height the space station flies.
+<a href="/goin-fast/orbit/">Orbit</a> is not up. Orbit is sideways.</p>
+<p><b>The ceilin'.</b> There is one, it is 299,792,458 metres a second, and it does not
+haggle. Past a certain point the speed stops goin' up and your <em>watch</em> starts
+goin' slow instead. <a href="/goin-fast/limit/">Here is what that costs.</a></p>
+</div>
+
+<figure class="fig"><div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 628" role="img" aria-labelledby="t d"><title id="t">The ladder of speed, on a log scale</title><desc id="d">Twenty measured speeds from continental drift to light, one row each, plotted on a shared base-ten logarithmic axis of metres per second.</desc><style>.ink{fill:#17120e} .mut{fill:#6a5c48} .acc{fill:#b7222a}.s{stroke:#17120e;fill:none;stroke-width:2}.sm{stroke:#d8c9ae;fill:none;stroke-width:1.4}.sa{stroke:#b7222a;fill:none;stroke-width:3}.sb{stroke:#e08a1e;fill:none;stroke-width:2.4}text{font-family:Georgia,serif;font-size:15px}.lab{font-family:"Bebas Neue",Oswald,"Arial Narrow",sans-serif;letter-spacing:.06em;font-size:17px}.holler{font-family:"Bebas Neue",Oswald,"Arial Narrow",sans-serif;font-size:26px;letter-spacing:.04em;fill:#e08a1e;transform-box:fill-box;transform-origin:center}.pop{animation:pop 4s ease-in-out infinite;opacity:0}@keyframes pop{0%,58%{opacity:0;transform:translateY(10px) scale(.85) rotate(-7deg)}66%{opacity:1;transform:translateY(0) scale(1.12) rotate(-7deg)}72%{transform:translateY(0) scale(1) rotate(-7deg)}90%{opacity:1}100%{opacity:0;transform:translateY(-8px) scale(1) rotate(-7deg)}}.rider{animation:rider 7s linear infinite}@keyframes rider{0%{opacity:0}4%{opacity:1}96%{opacity:1}100%{opacity:0}}.draw{stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.6s ease-out both}@keyframes draw{to{stroke-dashoffset:0}}.slide{animation:slide .8s cubic-bezier(.2,.9,.3,1) both}@keyframes slide{0%{opacity:0;transform:translateX(-26px)}100%{opacity:1;transform:translateX(0)}}.throb{animation:throb 2.6s ease-in-out infinite}@keyframes throb{0%,100%{opacity:.35}50%{opacity:1}}@media (prefers-reduced-motion:reduce){*{animation:none!important;stroke-dashoffset:0!important}.pop,.rider{opacity:1}}@media (prefers-color-scheme:dark){.ink{fill:#f0e6d6} .mut{fill:#a6947c} .acc{fill:#ef4b4b}.s{stroke:#f0e6d6} .sm{stroke:#3a3128} .sa{stroke:#ef4b4b}.sb{stroke:#f0b04a} .holler{fill:#f0b04a}}</style><line x1="278.0" y1="38" x2="278.0" y2="582" class="sm"/><text x="278.0" y="600" text-anchor="middle" class="mut">10<tspan dy="-6" font-size="10">-9</tspan></text><line x1="368.0" y1="38" x2="368.0" y2="582" class="sm"/><text x="368.0" y="600" text-anchor="middle" class="mut">10<tspan dy="-6" font-size="10">-6</tspan></text><line x1="458.0" y1="38" x2="458.0" y2="582" class="sm"/><text x="458.0" y="600" text-anchor="middle" class="mut">10<tspan dy="-6" font-size="10">-3</tspan></text><line x1="548.0" y1="38" x2="548.0" y2="582" class="sm"/><text x="548.0" y="600" text-anchor="middle" class="mut">10<tspan dy="-6" font-size="10">0</tspan></text><line x1="638.0" y1="38" x2="638.0" y2="582" class="sm"/><text x="638.0" y="600" text-anchor="middle" class="mut">10<tspan dy="-6" font-size="10">3</tspan></text><line x1="728.0" y1="38" x2="728.0" y2="582" class="sm"/><text x="728.0" y="600" text-anchor="middle" class="mut">10<tspan dy="-6" font-size="10">6</tspan></text><text x="260" y="28" class="lab ink">METRES PER SECOND — EACH GRID LINE IS A THOUSAND TIMES THE LAST</text><rect x="0" y="44" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="59" text-anchor="end" class="ink">The ground under the house</text><line x1="260.0" y1="54" x2="274.9" y2="54" class="sm slide" style="animation-delay:0.00s"/><circle cx="274.9" cy="54" r="5" class="acc slide" style="animation-delay:0.00s"/><text x="285.9" y="59" class="mut slide" style="animation-delay:0.00s">7.9e-10 m/s</text><text x="246" y="85" text-anchor="end" class="ink">A racin' snail</text><line x1="260.0" y1="80" x2="471.2" y2="80" class="sm slide" style="animation-delay:0.09s"/><circle cx="471.2" cy="80" r="5" class="acc slide" style="animation-delay:0.09s"/><text x="482.2" y="85" class="mut slide" style="animation-delay:0.09s">2.8 mm/s</text><rect x="0" y="96" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="111" text-anchor="end" class="ink">A body walkin'</text><line x1="260.0" y1="106" x2="550.4" y2="106" class="sm slide" style="animation-delay:0.18s"/><circle cx="550.4" cy="106" r="5" class="acc slide" style="animation-delay:0.18s"/><text x="561.4" y="111" class="mut slide" style="animation-delay:0.18s">1.2 m/s</text><text x="246" y="137" text-anchor="end" class="ink">Usain Bolt, flat out</text><line x1="260.0" y1="132" x2="580.7" y2="132" class="sm slide" style="animation-delay:0.27s"/><circle cx="580.7" cy="132" r="5" class="acc slide" style="animation-delay:0.27s"/><text x="591.7" y="137" class="mut slide" style="animation-delay:0.27s">12 m/s</text><rect x="0" y="148" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="163" text-anchor="end" class="ink">A cheetah, hunting</text><line x1="260.0" y1="158" x2="590.4" y2="158" class="sm slide" style="animation-delay:0.36s"/><circle cx="590.4" cy="158" r="5" class="acc slide" style="animation-delay:0.36s"/><text x="601.4" y="163" class="mut slide" style="animation-delay:0.36s">26 m/s</text><text x="246" y="189" text-anchor="end" class="ink">Pickup on the interstate</text><line x1="260.0" y1="184" x2="592.9" y2="184" class="sm slide" style="animation-delay:0.45s"/><circle cx="592.9" cy="184" r="5" class="acc slide" style="animation-delay:0.45s"/><text x="603.9" y="189" class="mut slide" style="animation-delay:0.45s">31 m/s</text><rect x="0" y="200" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="215" text-anchor="end" class="ink">A peregrine, stooping</text><line x1="260.0" y1="210" x2="609.0" y2="210" class="sm slide" style="animation-delay:0.54s"/><circle cx="609.0" cy="210" r="5" class="acc slide" style="animation-delay:0.54s"/><text x="620.0" y="215" class="mut slide" style="animation-delay:0.54s">108 m/s</text><text x="246" y="241" text-anchor="end" class="ink">ThrustSSC, on the salt</text><line x1="260.0" y1="236" x2="624.0" y2="236" class="sm slide" style="animation-delay:0.63s"/><circle cx="624.0" cy="236" r="5" class="acc slide" style="animation-delay:0.63s"/><text x="635.0" y="241" class="mut slide" style="animation-delay:0.63s">341 m/s</text><rect x="0" y="252" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="267" text-anchor="end" class="ink">Sound, in the air out front</text><line x1="260.0" y1="262" x2="624.1" y2="262" class="sm slide" style="animation-delay:0.72s"/><circle cx="624.1" cy="262" r="5" class="acc slide" style="animation-delay:0.72s"/><text x="635.1" y="267" class="mut slide" style="animation-delay:0.72s">343 m/s</text><text x="246" y="293" text-anchor="end" class="ink">The tip of a bullwhip</text><line x1="260.0" y1="288" x2="633.1" y2="288" class="sm slide" style="animation-delay:0.81s"/><circle cx="633.1" cy="288" r="5" class="acc slide" style="animation-delay:0.81s"/><text x="644.1" y="293" class="mut slide" style="animation-delay:0.81s">686 m/s</text><rect x="0" y="304" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="319" text-anchor="end" class="ink">A .30-06, leavin' the muzzle</text><line x1="260.0" y1="314" x2="635.9" y2="314" class="sm slide" style="animation-delay:0.90s"/><circle cx="635.9" cy="314" r="5" class="acc slide" style="animation-delay:0.90s"/><text x="646.9" y="319" class="mut slide" style="animation-delay:0.90s">853 m/s</text><text x="246" y="345" text-anchor="end" class="ink">An SR-71, in a straight line</text><line x1="260.0" y1="340" x2="637.7" y2="340" class="sm slide" style="animation-delay:0.99s"/><circle cx="637.7" cy="340" r="5" class="acc slide" style="animation-delay:0.99s"/><text x="648.7" y="345" class="mut slide" style="animation-delay:0.99s">980 m/s</text><rect x="0" y="356" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="371" text-anchor="end" class="ink">The X-15, with the rocket lit</text><line x1="260.0" y1="366" x2="647.2" y2="366" class="sm slide" style="animation-delay:1.08s"/><circle cx="647.2" cy="366" r="5" class="acc slide" style="animation-delay:1.08s"/><text x="658.2" y="371" class="mut slide" style="animation-delay:1.08s">2.0 km/s</text><text x="246" y="397" text-anchor="end" class="ink">The space station, goin' around</text><line x1="260.0" y1="392" x2="664.5" y2="392" class="sm slide" style="animation-delay:1.17s"/><circle cx="664.5" cy="392" r="5" class="acc slide" style="animation-delay:1.17s"/><text x="675.5" y="397" class="mut slide" style="animation-delay:1.17s">7.7 km/s</text><rect x="0" y="408" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="423" text-anchor="end" class="ink">Quittin' the Earth entirely</text><line x1="260.0" y1="418" x2="669.5" y2="418" class="sm slide" style="animation-delay:1.26s"/><circle cx="669.5" cy="418" r="5" class="acc slide" style="animation-delay:1.26s"/><text x="680.5" y="423" class="mut slide" style="animation-delay:1.26s">11.2 km/s</text><text x="246" y="449" text-anchor="end" class="ink">Voyager 1, still leavin'</text><line x1="260.0" y1="444" x2="674.9" y2="444" class="sm slide" style="animation-delay:1.35s"/><circle cx="674.9" cy="444" r="5" class="acc slide" style="animation-delay:1.35s"/><text x="685.9" y="449" class="mut slide" style="animation-delay:1.35s">17.0 km/s</text><rect x="0" y="460" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="475" text-anchor="end" class="ink">This whole planet, orbitin'</text><line x1="260.0" y1="470" x2="682.2" y2="470" class="sm slide" style="animation-delay:1.44s"/><circle cx="682.2" cy="470" r="5" class="acc slide" style="animation-delay:1.44s"/><text x="693.2" y="475" class="mut slide" style="animation-delay:1.44s">29.8 km/s</text><text x="246" y="501" text-anchor="end" class="ink">The Parker Solar Probe, at the bottom</text><line x1="260.0" y1="496" x2="706.5" y2="496" class="sm slide" style="animation-delay:1.53s"/><circle cx="706.5" cy="496" r="5" class="acc slide" style="animation-delay:1.53s"/><text x="717.5" y="501" class="mut slide" style="animation-delay:1.53s">192 km/s</text><rect x="0" y="512" width="980" height="26" fill="#b7222a" opacity=".045"/><text x="246" y="527" text-anchor="end" class="ink">The Sun, haulin' the lot of us</text><line x1="260.0" y1="522" x2="708.9" y2="522" class="sm slide" style="animation-delay:1.62s"/><circle cx="708.9" cy="522" r="5" class="acc slide" style="animation-delay:1.62s"/><text x="719.9" y="527" class="mut slide" style="animation-delay:1.62s">230 km/s</text><text x="246" y="553" text-anchor="end" class="ink">Light</text><line x1="260.0" y1="548" x2="802.3" y2="548" class="sm slide" style="animation-delay:1.71s"/><circle cx="802.3" cy="548" r="5" class="acc slide" style="animation-delay:1.71s"/><text x="813.3" y="553" class="mut slide" style="animation-delay:1.71s">299,792 km/s</text><text x="786.3" y="534" text-anchor="end" class="holler pop">YEE HAW!</text></svg></div><figcaption>Twenty rungs, each notch ten times the last. From the Atlantic gettin' wider to light itself is eighteen powers of ten.</figcaption></figure>
+
+<h2>Start here</h2>
+<ul class="cards">
+<li><h3><a href="/goin-fast/ladder/">The ladder</a></h3><p>Twenty speeds, smallest to
+biggest, each one with the arithmetic and who measured it. Snail to light.</p></li>
+<li><h3><a href="/goin-fast/sound/">The crack of the whip</a></h3><p>Why a bullwhip pops,
+why thunder lags, and why the sound barrier was never a wall — it was your own racket
+pilin' up in front of you.</p></li>
+<li><h3><a href="/goin-fast/drag/">The air tax</a></h3><p>19 horsepower at
+sixty, 45 at eighty, to shove the same truck-shaped hole through the same
+still air.</p></li>
+<li><h3><a href="/goin-fast/orbit/">Fallin' and missin'</a></h3><p>Newton put a cannon on a
+mountain in 1728 and explained satellites a quarter thousand years before there
+were any.</p></li>
+<li><h3><a href="/goin-fast/limit/">The ceilin'</a></h3><p>Two trucks doin' three-quarters
+light speed, head on, close at 0.96c. Not 1.5. Here is why, and what
+it does to a watch.</p></li>
+<li><h3><a href="/goin-fast/cheats/">Things that cheat</a></h3><p>A shadow on the barn wall
+can outrun light and break no rule at all. Five of these, and what is moving in
+each.</p></li>
+<li><h3><a href="/goin-fast/reckoner/">The reckoner</a></h3><p>Four calculators. How fast
+you are goin' settin' still, what the air costs, how two speeds add, how slow your
+watch runs.</p></li>
+</ul>
+<div class="prev-next"><span></span><a href="/goin-fast/ladder/">The ladder →</a></div></main><footer class="foot"><div class="wrap"><p>Goin' Fast — twenty measured speeds and what each one costs. Text and diagrams by Nan, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; the code that builds them, <a href="https://github.com/NaNoBotCo/goin-fast">MIT</a>. Built 2026-09-22. Every figure on this site was computed from the formula shown beside it.</p><div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div><div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div><div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div></div></footer></body></html>

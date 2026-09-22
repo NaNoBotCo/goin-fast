@@ -1,0 +1,21 @@
+{
+  "note": "Sources cited by the pages, beyond the ones on the ladder. Keys are anchors.",
+  "sources": {
+    "ashby-gps": ["Neil Ashby, Relativity in the Global Positioning System, Living Reviews in Relativity 6:1 (2003)", "https://doi.org/10.12942/lrr-2003-1"],
+    "gw170817": ["Abbott et al., Gravitational waves and gamma-rays from a binary neutron star merger: GW170817 and GRB 170817A, ApJL 848 L13 (2017)", "https://doi.org/10.3847/2041-8213/aa920c"],
+    "principia": ["Isaac Newton, A Treatise of the System of the World (1728) — the cannon on the mountain", "https://archive.org/details/treatiseofsystem00newt"],
+    "energy-institute": ["Energy Institute, Statistical Review of World Energy 2024 — world primary energy about 620 exajoules", "https://www.energyinst.org/statistical-review"],
+    "einstein-1905": ["Albert Einstein, Zur Elektrodynamik bewegter Körper, Annalen der Physik 17 (1905) 891–921", "https://doi.org/10.1002/andp.19053221004"],
+    "hafele-keating": ["Hafele & Keating, Around-the-world atomic clocks, Science 177 (1972) 166–170", "https://doi.org/10.1126/science.177.4044.166"],
+    "chou-clocks": ["Chou, Hume, Rosenband & Wineland, Optical clocks and relativity, Science 329 (2010) 1630–1633 — time dilation measured at 10 m/s and 33 cm of height", "https://doi.org/10.1126/science.1192720"],
+    "codata": ["CODATA 2018 recommended values — the gravitational constant G", "https://physics.nist.gov/cuu/Constants/"],
+    "yeager": ["NASA, Chuck Yeager and the Bell X-1, 14 October 1947", "https://www.nasa.gov/history/x-1/"],
+    "hubble-law": ["Planck Collaboration, Planck 2018 results VI: cosmological parameters — the expansion rate", "https://doi.org/10.1051/0004-6361/201833910"],
+    "alcubierre": ["Miguel Alcubierre, The warp drive: hyper-fast travel within general relativity, Class. Quantum Grav. 11 (1994) L73", "https://doi.org/10.1088/0264-9381/11/5/001"],
+    "epr-nosignal": ["Ghirardi, Rimini & Weber, A general argument against superluminal transmission through the quantum mechanical measurement process, Lett. Nuovo Cimento 27 (1980) 293", "https://doi.org/10.1007/BF02817189"],
+    "epa-mileage": ["US EPA, Fuel economy at higher speeds", "https://www.fueleconomy.gov/feg/driveHabits.jsp"],
+    "hoerner": ["Sighard F. Hoerner, Fluid-Dynamic Drag (1965) — drag coefficients and frontal areas", "https://archive.org/details/FluidDynamicDrag"],
+    "nasa-sonicboom": ["NASA, Sonic booms and the boom carpet", "https://www.nasa.gov/aeronautics/sonic-booms/"],
+    "bipm-second": ["BIPM, SI brochure — the second and the caesium standard", "https://www.bipm.org/en/measurement-units/si-defining-constants"]
+  }
+}

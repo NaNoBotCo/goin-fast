@@ -1,0 +1,243 @@
+{
+ "note": "The rungs. ms = metres per second. Where a rung is arithmetic off a published measurement, show is the arithmetic and src points at the measurement.",
+ "rungs": [
+  {
+   "id": "drift",
+   "name": "The ground under the house",
+   "ms": 7.9e-10,
+   "show": "2.5 cm a year ÷ 31,557,600 s",
+   "say": "The Atlantic gets wider about as fast as a fingernail grows. You have been movin' this whole time and nobody spilled their coffee.",
+   "src": "usgs-plates"
+  },
+  {
+   "id": "snail",
+   "name": "A racin' snail",
+   "ms": 0.00275,
+   "show": "13 in (0.330 m) in 2 min (120 s)",
+   "say": "That is the course record at Congham, and the snail that set it was named Archie. Thirteen inches, two minutes, downhill in spirit only.",
+   "src": "snail-racing"
+  },
+  {
+   "id": "walk",
+   "name": "A body walkin'",
+   "ms": 1.2,
+   "show": "3.5 ft/s, the figure the crosswalk timer is set by",
+   "say": "Every WALK light in the country is timed off this number. When the hand starts blinkin' early, the argument is with a federal table.",
+   "src": "mutcd"
+  },
+  {
+   "id": "bolt",
+   "name": "Usain Bolt, flat out",
+   "ms": 12.27,
+   "show": "peak over the 60–80 m split; the whole 100 m averaged 10.44 m/s",
+   "say": "Fastest a human body has been measured movin' under its own steam. He was not goin' that fast at the gun and he was slowin' at the tape.",
+   "src": "berlin-biomech"
+  },
+  {
+   "id": "cheetah",
+   "name": "A cheetah, hunting",
+   "ms": 25.9,
+   "show": "measured on wild cheetahs wearin' a collar, in the hunt",
+   "say": "Twice Bolt and change. The collar caught 25.9 m/s over a single stride — not a zoo sprint down a straight lane, but a turn-and-burn after dinner.",
+   "src": "wilson-cheetah"
+  },
+  {
+   "id": "highway",
+   "name": "Pickup on the interstate",
+   "ms": 31.3,
+   "show": "70 mph × 0.44704",
+   "say": "You beat the cheetah in third gear and it cost you a gallon every eighteen miles or so.",
+   "src": "interstate"
+  },
+  {
+   "id": "falcon",
+   "name": "A peregrine, stooping",
+   "ms": 108.0,
+   "show": "242 mph, clocked off a skydiver's meter",
+   "say": "Ken Franklin jumped out of the plane with the bird and they fell together so the speed could be read. Fastest anything alive has been measured goin'.",
+   "src": "franklin-peregrine"
+  },
+  {
+   "id": "thrust",
+   "name": "ThrustSSC, on the salt",
+   "ms": 341.1,
+   "show": "763.035 mph, two runs inside an hour, averaged",
+   "say": "Andy Green, Black Rock Desert, 15 October 1997 — 1.9 m/s under the speed of sound on the salt that day only because the desert air was cold. First car to go supersonic, and still the record, which tells you somethin' about how hard the next mile an hour is.",
+   "src": "thrustssc"
+  },
+  {
+   "id": "sound",
+   "name": "Sound, in the air out front",
+   "ms": 343.0,
+   "show": "dry air at 20 °C; colder air is slower",
+   "say": "The rung everything else on this page gets measured against. Count the seconds after the flash and divide by three for kilometres, by five for miles.",
+   "src": "speed-of-sound"
+  },
+  {
+   "id": "whip",
+   "name": "The tip of a bullwhip",
+   "ms": 686.0,
+   "show": "about twice the speed of sound at the tip",
+   "say": "The crack is a sonic boom. A whip was the first thing a person ever made go faster than sound, and it was doin' it for centuries before anybody worked out why.",
+   "src": "goriely-whip"
+  },
+  {
+   "id": "bullet",
+   "name": "A .30-06, leavin' the muzzle",
+   "ms": 853.0,
+   "show": "2,800 ft/s, 150-grain factory load",
+   "say": "Two and a half times the speed of sound before it clears the porch rail. The crack you hear downrange is the bullet's own boom, not the powder.",
+   "src": "saami"
+  },
+  {
+   "id": "sr71",
+   "name": "An SR-71, in a straight line",
+   "ms": 980.4,
+   "show": "3,529.56 km/h, the standin' record for an air-breathin' aeroplane",
+   "say": "Eldon Joersz and George Morgan, 28 July 1976. Fifty years on, nothin' with a person in it and an air intake has gone quicker and had it certified.",
+   "src": "fai-sr71"
+  },
+  {
+   "id": "x15",
+   "name": "The X-15, with the rocket lit",
+   "ms": 2021.0,
+   "show": "Mach 6.7, 4,520 mph",
+   "say": "Pete Knight, 3 October 1967. The paint burned off. The airframe came home warped and that airplane never flew again.",
+   "src": "nasa-x15"
+  },
+  {
+   "id": "iss",
+   "name": "The space station, goin' around",
+   "ms": 7660.0,
+   "show": "√(GM/r) at 420 km up",
+   "say": "Sunrise every ninety-two minutes. It is not up there because it went up. It is up there because it is goin' sideways this fast and keeps missin'.",
+   "src": "nasa-iss"
+  },
+  {
+   "id": "escape",
+   "name": "Quittin' the Earth entirely",
+   "ms": 11186.0,
+   "show": "√(2GM/R) at the ground, air not counted",
+   "say": "Throw somethin' this fast and straight up and it does not come back down. Ever. No engine needed after the throw.",
+   "src": "nasa-earth"
+  },
+  {
+   "id": "voyager",
+   "name": "Voyager 1, still leavin'",
+   "ms": 17000.0,
+   "show": "about 61,000 km/h away from the Sun",
+   "say": "Launched in 1977, out past the edge of the Sun's wind, and still talkin' back on a transmitter weaker than a refrigerator bulb.",
+   "src": "nasa-voyager"
+  },
+  {
+   "id": "earth",
+   "name": "This whole planet, orbitin'",
+   "ms": 29780.0,
+   "show": "the Earth's mean orbital speed",
+   "say": "Sittin' on the porch, you are doin' this. Sixty-seven thousand miles an hour and the sweet tea does not slosh.",
+   "src": "nasa-earth"
+  },
+  {
+   "id": "parker",
+   "name": "The Parker Solar Probe, at the bottom",
+   "ms": 192000.0,
+   "show": "about 692,000 km/h at closest approach, 24 December 2024",
+   "say": "Fastest thing people have ever built. The Sun did most of the work — the probe fell, the way anything falls, and the Sun is a long way down.",
+   "src": "nasa-parker"
+  },
+  {
+   "id": "galaxy",
+   "name": "The Sun, haulin' the lot of us",
+   "ms": 230000.0,
+   "show": "around the centre of the Milky Way",
+   "say": "One lap takes about 230 million years. Last time we were here, the dinosaurs had not started.",
+   "src": "milky-way"
+  },
+  {
+   "id": "light",
+   "name": "Light",
+   "ms": 299792458.0,
+   "show": "exact, by definition",
+   "say": "Not measured any more. Fixed. The metre is defined as how far light goes in 1/299,792,458 of a second, so the number cannot be wrong — the ruler moves instead.",
+   "src": "si-metre"
+  }
+ ],
+ "sources": {
+  "usgs-plates": [
+   "USGS, Understanding plate motions",
+   "https://pubs.usgs.gov/gip/dynamic/understanding.html"
+  ],
+  "snail-racing": [
+   "World Snail Racing Championships, Congham, Norfolk — Archie's 1995 course record",
+   "https://www.snailracing.net/"
+  ],
+  "mutcd": [
+   "FHWA, Manual on Uniform Traffic Control Devices §4E.06 — pedestrian clearance at 3.5 ft/s",
+   "https://mutcd.fhwa.dot.gov/"
+  ],
+  "berlin-biomech": [
+   "Graubüner & Nixdorf, Biomechanical analysis of the sprint events, 12th IAAF World Championships, Berlin 2009",
+   "https://worldathletics.org/development/research-centre"
+  ],
+  "wilson-cheetah": [
+   "Wilson et al., Locomotion dynamics of hunting in wild cheetahs, Nature 498 (2013) 185–189",
+   "https://www.nature.com/articles/nature12295"
+  ],
+  "interstate": [
+   "US interstate posted limits, 65–80 mph by state",
+   "https://www.fhwa.dot.gov/"
+  ],
+  "franklin-peregrine": [
+   "Ken Franklin's 1999 skydive measurements of a trained peregrine's stoop, reported in National Geographic",
+   "https://www.nationalgeographic.com/animals/birds/facts/peregrine-falcon"
+  ],
+  "speed-of-sound": [
+   "NASA Glenn Research Center, Speed of sound",
+   "https://www.grc.nasa.gov/www/k-12/airplane/sound.html"
+  ],
+  "thrustssc": [
+   "FIA world land speed record, ThrustSSC, 15 October 1997",
+   "https://www.fia.com/"
+  ],
+  "goriely-whip": [
+   "Goriely & McMillen, Shape of a cracking whip, Phys. Rev. Lett. 88, 244301 (2002)",
+   "https://doi.org/10.1103/PhysRevLett.88.244301"
+  ],
+  "saami": [
+   "SAAMI published velocities for .30-06 Springfield, 150 gr",
+   "https://saami.org/"
+  ],
+  "fai-sr71": [
+   "Fédération Aéronautique Internationale record 8886, Lockheed SR-71A, 28 July 1976",
+   "https://www.fai.org/records"
+  ],
+  "nasa-x15": [
+   "NASA Armstrong fact sheet, X-15 hypersonic research program",
+   "https://www.nasa.gov/centers/armstrong/news/FactSheets/FS-052-DFRC.html"
+  ],
+  "nasa-iss": [
+   "NASA, International Space Station facts and figures",
+   "https://www.nasa.gov/international-space-station/"
+  ],
+  "nasa-earth": [
+   "NASA NSSDCA, Earth fact sheet",
+   "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+  ],
+  "nasa-voyager": [
+   "NASA JPL, Voyager mission status",
+   "https://voyager.jpl.nasa.gov/mission/status/"
+  ],
+  "nasa-parker": [
+   "NASA, Parker Solar Probe closest approach, 24 December 2024",
+   "https://science.nasa.gov/mission/parker-solar-probe/"
+  ],
+  "milky-way": [
+   "Reid et al., Trigonometric parallaxes of high-mass star forming regions, ApJ 885 (2019) 131",
+   "https://doi.org/10.3847/1538-4357/ab4a11"
+  ],
+  "si-metre": [
+   "BIPM, SI brochure — the metre, 17th CGPM (1983)",
+   "https://www.bipm.org/en/measurement-units/si-defining-constants"
+  ]
+ }
+}

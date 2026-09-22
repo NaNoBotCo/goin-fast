@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The ceilin&#x27; — 299,792,458 metres a second</title><meta name="description" content="Why speeds do not add, what gamma costs, how GPS would drift 10 km a day without the correction, and what actually travels at c."><link rel="canonical" href="https://nanobotco.github.io/goin-fast/limit/"><link rel="icon" href="/goin-fast/icon.svg" type="image/svg+xml"><meta property="og:title" content="The ceilin&#x27; — 299,792,458 metres a second"><meta property="og:description" content="Why speeds do not add, what gamma costs, how GPS would drift 10 km a day without the correction, and what actually travels at c."><meta property="og:type" content="article"><meta property="og:url" content="https://nanobotco.github.io/goin-fast/limit/"><meta name="author" content="Nan · hongdam.net"><style>
+:root{
+ --ink:#17120e; --paper:#f6efe3; --panel:#fffaf0; --line:#d8c9ae;
+ --accent:#b7222a; --accent2:#e08a1e; --muted:#6a5c48;
+ --display:"Bebas Neue","Oswald","Haettenschweiler","Arial Narrow",system-ui,sans-serif;
+ --body:Georgia,"Iowan Old Style","Times New Roman",serif;
+ --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+ :root{--ink:#f0e6d6; --paper:#12100e; --panel:#1b1714; --line:#3a3128;
+       --accent:#ef4b4b; --accent2:#f0b04a; --muted:#a6947c;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+ font-size:19px;line-height:1.62}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.1rem}
+a{color:var(--accent);text-underline-offset:.16em}
+a:hover{color:var(--accent2)}
+
+header.top{border-bottom:4px solid var(--accent);background:var(--panel)}
+header.top .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1rem;align-items:baseline;
+ padding-top:.7rem;padding-bottom:.7rem}
+header.top .mark{font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;
+ text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap}
+header.top .mark b{color:var(--accent)}
+nav.site{display:flex;flex-wrap:wrap;gap:.1rem .9rem;font-family:var(--display);
+ font-size:1rem;letter-spacing:.08em;text-transform:uppercase}
+nav.site a{text-decoration:none}
+nav.site a[aria-current]{color:var(--ink);border-bottom:3px solid var(--accent2)}
+
+h1{font-family:var(--display);font-size:clamp(2.6rem,10vw,4.6rem);line-height:.92;
+ letter-spacing:.01em;text-transform:uppercase;margin:1.6rem 0 .3rem}
+h1 .sub{display:block;font-family:var(--body);font-size:clamp(1rem,3vw,1.25rem);
+ text-transform:none;letter-spacing:0;color:var(--muted);line-height:1.4;
+ margin-top:.6rem;font-style:italic}
+h2{font-family:var(--display);font-size:clamp(1.7rem,5.5vw,2.4rem);line-height:1;
+ text-transform:uppercase;letter-spacing:.02em;margin:2.4rem 0 .6rem;
+ border-bottom:2px solid var(--line);padding-bottom:.3rem}
+h3{font-family:var(--display);font-size:1.35rem;text-transform:uppercase;
+ letter-spacing:.04em;margin:1.8rem 0 .3rem}
+p{margin:.85rem 0}
+.lede{font-size:1.16rem}
+.lede:first-letter{font-family:var(--display);float:left;font-size:3.1em;line-height:.78;
+ padding:.06em .09em 0 0;color:var(--accent)}
+
+.pull{font-family:var(--display);font-size:clamp(1.5rem,5vw,2.1rem);line-height:1.04;
+ text-transform:uppercase;color:var(--accent);border-left:6px solid var(--accent2);
+ padding:.2rem 0 .2rem 1rem;margin:1.8rem 0}
+
+.box{background:var(--panel);border:2px solid var(--line);border-left:8px solid var(--accent2);
+ padding:.9rem 1.1rem;margin:1.5rem 0}
+.box h3{margin-top:.2rem}
+.box.sum{border-left-color:var(--accent)}
+.fig{margin:1.7rem 0}
+.fig .canvas{overflow-x:auto;border:2px solid var(--line);background:var(--panel)}
+.fig svg{width:100%;min-width:640px;height:auto;display:block}
+.fig figcaption{font-size:.86rem;color:var(--muted);margin-top:.45rem}
+figure{margin:1.7rem 0}
+
+table{border-collapse:collapse;width:100%;font-size:.94rem;margin:1.2rem 0}
+th,td{border:1px solid var(--line);padding:.36rem .5rem;text-align:left;vertical-align:top}
+th{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;
+ font-weight:400;font-size:1rem;background:var(--panel)}
+td.n{text-align:right;font-family:var(--mono);font-size:.86rem;white-space:nowrap}
+.scroll{overflow-x:auto}
+
+ol.rungs{list-style:none;padding:0;margin:1.4rem 0;counter-reset:rung}
+ol.rungs li{border-top:1px solid var(--line);padding:.9rem 0;display:grid;
+ grid-template-columns:5.6rem 1fr;gap:.2rem .9rem}
+ol.rungs li:last-child{border-bottom:1px solid var(--line)}
+ol.rungs .v{font-family:var(--mono);font-size:.84rem;color:var(--accent);
+ text-align:right;padding-top:.35rem;line-height:1.35}
+ol.rungs .v b{display:block;font-family:var(--display);font-size:1.45rem;color:var(--ink);
+ letter-spacing:.02em}
+ol.rungs h3{margin:0}
+ol.rungs p{margin:.25rem 0 0}
+ol.rungs .show{font-size:.84rem;color:var(--muted);font-family:var(--mono)}
+
+.calc{background:var(--panel);border:2px solid var(--line);padding:1rem 1.1rem;margin:1.6rem 0}
+.calc label{display:block;font-family:var(--display);text-transform:uppercase;
+ letter-spacing:.06em;font-size:.95rem;margin:.7rem 0 .15rem}
+.calc input,.calc select{font:inherit;font-family:var(--mono);font-size:.95rem;
+ padding:.35rem .5rem;border:2px solid var(--line);background:var(--paper);
+ color:var(--ink);width:100%;max-width:18rem}
+.calc input[type=range]{padding:0;border:0;max-width:100%}
+.calc .out{font-family:var(--display);font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.06;
+ color:var(--accent);margin:.8rem 0 .1rem;word-break:break-word}
+.calc .out small{display:block;font-family:var(--body);font-size:.95rem;font-style:italic;
+ color:var(--muted);line-height:1.4;margin-top:.35rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.2rem 1.4rem}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;
+ margin:1.6rem 0;padding:0;list-style:none}
+.cards li{border:2px solid var(--line);background:var(--panel);padding:.8rem .9rem}
+.cards h3{margin:.1rem 0 .3rem}
+.cards h3 a{text-decoration:none}
+.cards p{margin:.2rem 0 0;font-size:.95rem}
+
+.src{font-size:.82rem;color:var(--muted)}
+sup.ref a{text-decoration:none;font-family:var(--mono);font-size:.74em;
+ padding:0 .12em;color:var(--accent)}
+ol.sources{font-size:.92rem}
+ol.sources li{margin:.55rem 0}
+
+footer.foot{margin-top:3.5rem;border-top:4px solid var(--accent);background:var(--panel);
+ padding:1.3rem 0 2.2rem;font-size:.88rem;color:var(--muted)}
+footer.foot a{color:var(--accent)}
+footer.foot .fleet{margin-top:.6rem;line-height:1.9}
+footer.foot .support,footer.foot .maker{margin-top:.5rem}
+.prev-next{display:flex;justify-content:space-between;gap:1rem;margin:2.6rem 0 0;
+ font-family:var(--display);text-transform:uppercase;letter-spacing:.05em}
+.prev-next a{text-decoration:none}
+
+@media (max-width:30rem){
+ body{font-size:18px}
+ ol.rungs li{grid-template-columns:1fr}
+ ol.rungs .v{text-align:left;padding-top:0}
+ ol.rungs .v b{display:inline;font-size:1.25rem;margin-right:.5rem}
+}
+@media print{nav.site,.calc{display:none}body{background:#fff;color:#000}}
+</style></head><body><header class="top"><div class="wrap"><a class="mark" href="/goin-fast/">GOIN' <b>FAST</b></a><nav class="site"><a href="/goin-fast/">Home</a><a href="/goin-fast/ladder/">The ladder</a><a href="/goin-fast/sound/">Sound</a><a href="/goin-fast/drag/">Air</a><a href="/goin-fast/orbit/">Orbit</a><a href="/goin-fast/limit/" aria-current="page">The limit</a><a href="/goin-fast/cheats/">Cheats</a><a href="/goin-fast/reckoner/">Reckoner</a><a href="/goin-fast/sources/">Sources</a></nav></div></header><main class="wrap">
+<h1>The ceilin'<span class="sub">299,792,458 metres a second. Not a speed limit anybody
+set, not a limit of engines or money or nerve. Past a certain point the speed quits
+going up and your watch starts going slow instead.</span></h1>
+
+<p class="lede">Here is the strange part, and it is the whole of it: light goes the same
+speed past everybody. Run at it, run away from it, sit still — the number you measure
+comes out 299,792,458 metres a second every time<sup class="ref">[<a href="/goin-fast/sources/#einstein-1905" title="Albert Einstein, Zur Elektrodynamik bewegter Körper, Annalen der Physik 17 (1905) 891–921">24</a>]</sup>. That cannot be true
+of hay bales and it is not true of trucks, but it is true of light, it has been measured
+to death for a hundred and twenty years, and everything else on this page is the price
+of it being true.</p>
+
+<h2>Speeds do not stack</h2>
+
+<p>Two trucks come at each other, each doin' seventy. Closin' speed a hundred and forty,
+and that is near enough correct that the highway patrol uses it. It is not exactly
+correct. The exact version is:</p>
+
+<p class="pull">sum = (u + v) / (1 + uv/c²)</p>
+
+<p>At seventy miles an hour that correction is a few parts in a quadrillion — the
+difference does not show up until a good deal past the last rung on the ladder. Take
+two trucks at three-quarters the speed of light, though, head on, and they do not close
+at one and a half c. They close at 0.96c.</p>
+
+<figure class="fig"><div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="t d"><title id="t">Speeds do not stack the way hay bales do</title><desc id="d">Closing speed of two objects each moving at u, plotted the arithmetic way and the relativistic way; the second curve approaches but never reaches c.</desc><style>.ink{fill:#17120e} .mut{fill:#6a5c48} .acc{fill:#b7222a}.s{stroke:#17120e;fill:none;stroke-width:2}.sm{stroke:#d8c9ae;fill:none;stroke-width:1.4}.sa{stroke:#b7222a;fill:none;stroke-width:3}.sb{stroke:#e08a1e;fill:none;stroke-width:2.4}text{font-family:Georgia,serif;font-size:15px}.lab{font-family:"Bebas Neue",Oswald,"Arial Narrow",sans-serif;letter-spacing:.06em;font-size:17px}.holler{font-family:"Bebas Neue",Oswald,"Arial Narrow",sans-serif;font-size:26px;letter-spacing:.04em;fill:#e08a1e;transform-box:fill-box;transform-origin:center}.pop{animation:pop 4s ease-in-out infinite;opacity:0}@keyframes pop{0%,58%{opacity:0;transform:translateY(10px) scale(.85) rotate(-7deg)}66%{opacity:1;transform:translateY(0) scale(1.12) rotate(-7deg)}72%{transform:translateY(0) scale(1) rotate(-7deg)}90%{opacity:1}100%{opacity:0;transform:translateY(-8px) scale(1) rotate(-7deg)}}.rider{animation:rider 7s linear infinite}@keyframes rider{0%{opacity:0}4%{opacity:1}96%{opacity:1}100%{opacity:0}}.draw{stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.6s ease-out both}@keyframes draw{to{stroke-dashoffset:0}}.slide{animation:slide .8s cubic-bezier(.2,.9,.3,1) both}@keyframes slide{0%{opacity:0;transform:translateX(-26px)}100%{opacity:1;transform:translateX(0)}}.throb{animation:throb 2.6s ease-in-out infinite}@keyframes throb{0%,100%{opacity:.35}50%{opacity:1}}@media (prefers-reduced-motion:reduce){*{animation:none!important;stroke-dashoffset:0!important}.pop,.rider{opacity:1}}@media (prefers-color-scheme:dark){.ink{fill:#f0e6d6} .mut{fill:#a6947c} .acc{fill:#ef4b4b}.s{stroke:#f0e6d6} .sm{stroke:#3a3128} .sa{stroke:#ef4b4b}.sb{stroke:#f0b04a} .holler{fill:#f0b04a}}</style><line x1="70" y1="350" x2="830" y2="350" class="s"/><line x1="70" y1="70" x2="70" y2="350" class="s"/><line x1="70" y1="210.0" x2="830" y2="210.0" class="sm" stroke-dasharray="6 5"/><polyline points="70.0,350.0 73.8,348.6 77.6,347.2 81.4,345.8 85.2,344.4 89.0,343.0 92.8,341.6 96.6,340.2 100.4,338.8 104.2,337.4 108.0,336.0 111.8,334.6 115.6,333.2 119.4,331.8 123.2,330.4 127.0,329.0 130.8,327.6 134.6,326.2 138.4,324.8 142.2,323.4 146.0,322.0 149.8,320.6 153.6,319.2 157.4,317.8 161.2,316.4 165.0,315.0 168.8,313.6 172.6,312.2 176.4,310.8 180.2,309.4 184.0,308.0 187.8,306.6 191.6,305.2 195.4,303.8 199.2,302.4 203.0,301.0 206.8,299.6 210.6,298.2 214.4,296.8 218.2,295.4 222.0,294.0 225.8,292.6 229.6,291.2 233.4,289.8 237.2,288.4 241.0,287.0 244.8,285.6 248.6,284.2 252.4,282.8 256.2,281.4 260.0,280.0 263.8,278.6 267.6,277.2 271.4,275.8 275.2,274.4 279.0,273.0 282.8,271.6 286.6,270.2 290.4,268.8 294.2,267.4 298.0,266.0 301.8,264.6 305.6,263.2 309.4,261.8 313.2,260.4 317.0,259.0 320.8,257.6 324.6,256.2 328.4,254.8 332.2,253.4 336.0,252.0 339.8,250.6 343.6,249.2 347.4,247.8 351.2,246.4 355.0,245.0 358.8,243.6 362.6,242.2 366.4,240.8 370.2,239.4 374.0,238.0 377.8,236.6 381.6,235.2 385.4,233.8 389.2,232.4 393.0,231.0 396.8,229.6 400.6,228.2 404.4,226.8 408.2,225.4 412.0,224.0 415.8,222.6 419.6,221.2 423.4,219.8 427.2,218.4 431.0,217.0 434.8,215.6 438.6,214.2 442.4,212.8 446.2,211.4 450.0,210.0 453.8,208.6 457.6,207.2 461.4,205.8 465.2,204.4 469.0,203.0 472.8,201.6 476.6,200.2 480.4,198.8 484.2,197.4 488.0,196.0 491.8,194.6 495.6,193.2 499.4,191.8 503.2,190.4 507.0,189.0 510.8,187.6 514.6,186.2 518.4,184.8 522.2,183.4 526.0,182.0 529.8,180.6 533.6,179.2 537.4,177.8 541.2,176.4 545.0,175.0 548.8,173.6 552.6,172.2 556.4,170.8 560.2,169.4 564.0,168.0 567.8,166.6 571.6,165.2 575.4,163.8 579.2,162.4 583.0,161.0 586.8,159.6 590.6,158.2 594.4,156.8 598.2,155.4 602.0,154.0 605.8,152.6 609.6,151.2 613.4,149.8 617.2,148.4 621.0,147.0 624.8,145.6 628.6,144.2 632.4,142.8 636.2,141.4 640.0,140.0 643.8,138.6 647.6,137.2 651.4,135.8 655.2,134.4 659.0,133.0 662.8,131.6 666.6,130.2 670.4,128.8 674.2,127.4 678.0,126.0 681.8,124.6 685.6,123.2 689.4,121.8 693.2,120.4 697.0,119.0 700.8,117.6 704.6,116.2 708.4,114.8 712.2,113.4 716.0,112.0 719.8,110.6 723.6,109.2 727.4,107.8 731.2,106.4 735.0,105.0 738.8,103.6 742.6,102.2 746.4,100.8 750.2,99.4 754.0,98.0 757.8,96.6 761.6,95.2 765.4,93.8 769.2,92.4 773.0,91.0 776.8,89.6 780.6,88.2 784.4,86.8 788.2,85.4 792.0,84.0 795.8,82.6 799.6,81.2 803.4,79.8 807.2,78.4 811.0,77.0 814.8,75.6 818.6,74.2 822.4,72.8 826.2,71.4 830.0,70.0" class="sb" stroke-dasharray="8 6"/><polyline points="70.0,350.0 73.8,348.6 77.6,347.2 81.4,345.8 85.2,344.4 89.0,343.0 92.8,341.6 96.6,340.2 100.4,338.8 104.2,337.4 108.0,336.0 111.8,334.6 115.6,333.3 119.4,331.9 123.2,330.5 127.0,329.1 130.8,327.7 134.6,326.4 138.4,325.0 142.2,323.6 146.0,322.3 149.8,320.9 153.6,319.6 157.4,318.2 161.2,316.9 165.0,315.5 168.8,314.2 172.6,312.9 176.4,311.6 180.2,310.2 184.0,308.9 187.8,307.6 191.6,306.3 195.4,305.0 199.2,303.7 203.0,302.5 206.8,301.2 210.6,299.9 214.4,298.7 218.2,297.4 222.0,296.2 225.8,294.9 229.6,293.7 233.4,292.5 237.2,291.2 241.0,290.0 244.8,288.8 248.6,287.6 252.4,286.5 256.2,285.3 260.0,284.1 263.8,283.0 267.6,281.8 271.4,280.7 275.2,279.5 279.0,278.4 282.8,277.3 286.6,276.2 290.4,275.1 294.2,274.0 298.0,272.9 301.8,271.9 305.6,270.8 309.4,269.8 313.2,268.7 317.0,267.7 320.8,266.7 324.6,265.7 328.4,264.7 332.2,263.7 336.0,262.7 339.8,261.7 343.6,260.8 347.4,259.8 351.2,258.9 355.0,257.9 358.8,257.0 362.6,256.1 366.4,255.2 370.2,254.3 374.0,253.4 377.8,252.6 381.6,251.7 385.4,250.9 389.2,250.0 393.0,249.2 396.8,248.4 400.6,247.6 404.4,246.8 408.2,246.0 412.0,245.2 415.8,244.5 419.6,243.7 423.4,242.9 427.2,242.2 431.0,241.5 434.8,240.8 438.6,240.1 442.4,239.4 446.2,238.7 450.0,238.0 453.8,237.3 457.6,236.7 461.4,236.0 465.2,235.4 469.0,234.8 472.8,234.1 476.6,233.5 480.4,232.9 484.2,232.3 488.0,231.8 491.8,231.2 495.6,230.6 499.4,230.1 503.2,229.5 507.0,229.0 510.8,228.5 514.6,228.0 518.4,227.5 522.2,227.0 526.0,226.5 529.8,226.0 533.6,225.5 537.4,225.1 541.2,224.6 545.0,224.2 548.8,223.7 552.6,223.3 556.4,222.9 560.2,222.5 564.0,222.1 567.8,221.7 571.6,221.3 575.4,220.9 579.2,220.5 583.0,220.2 586.8,219.8 590.6,219.5 594.4,219.1 598.2,218.8 602.0,218.5 605.8,218.1 609.6,217.8 613.4,217.5 617.2,217.2 621.0,216.9 624.8,216.7 628.6,216.4 632.4,216.1 636.2,215.9 640.0,215.6 643.8,215.4 647.6,215.1 651.4,214.9 655.2,214.6 659.0,214.4 662.8,214.2 666.6,214.0 670.4,213.8 674.2,213.6 678.0,213.4 681.8,213.2 685.6,213.1 689.4,212.9 693.2,212.7 697.0,212.6 700.8,212.4 704.6,212.2 708.4,212.1 712.2,212.0 716.0,211.8 719.8,211.7 723.6,211.6 727.4,211.5 731.2,211.3 735.0,211.2 738.8,211.1 742.6,211.0 746.4,210.9 750.2,210.9 754.0,210.8 757.8,210.7 761.6,210.6 765.4,210.6 769.2,210.5 773.0,210.4 776.8,210.4 780.6,210.3 784.4,210.3 788.2,210.2 792.0,210.2 795.8,210.1 799.6,210.1 803.4,210.1 807.2,210.1 811.0,210.0 814.8,210.0 818.6,210.0 822.4,210.0 826.2,210.0 830.0,210.0" class="sa draw"/><text x="824" y="200.0" text-anchor="end" class="lab acc">LIGHT — THE CEILIN'</text><text x="617.2" y="189.0" text-anchor="middle" class="holler pop">CAIN'T GET THERE</text><text x="298.0" y="145.6" class="lab ink">HOW YOU'D RECKON IT: u + v</text><text x="419.6" y="263.2" class="lab acc">HOW IT COMES OUT: (u+v)/(1+uv/c²)</text><text x="260.0" y="372" text-anchor="middle" class="mut">0.25c</text><text x="450.0" y="372" text-anchor="middle" class="mut">0.5c</text><text x="640.0" y="372" text-anchor="middle" class="mut">0.75c</text><text x="830.0" y="372" text-anchor="middle" class="mut">1c</text><text x="70" y="52" class="lab ink">TWO TRUCKS, EACH DOIN' u, HEAD ON</text></svg></div><figcaption>Two objects each doing u, head on. Dashed is how you would reckon it. Solid is how it comes out. The solid one gets closer and closer to c and does not cross.</figcaption></figure>
+
+<p>Feed light into that formula and it spits light back out, at any u you like. That is
+the ceiling doing its work: you can shove forever and get closer forever and not
+arrive.</p>
+
+<h2>So where does the shovin' go?</h2>
+
+<p>Into the γ — gamma — a single number that measures how much the world has stopped
+behaving arithmetically:</p>
+
+<p class="pull">γ = 1 / √(1 − v²/c²)</p>
+
+<figure class="fig"><div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="t d"><title id="t">The gamma factor</title><desc id="d">The Lorentz factor against speed; it is near one for everything on the ladder below light and climbs without bound as v approaches c.</desc><style>.ink{fill:#17120e} .mut{fill:#6a5c48} .acc{fill:#b7222a}.s{stroke:#17120e;fill:none;stroke-width:2}.sm{stroke:#d8c9ae;fill:none;stroke-width:1.4}.sa{stroke:#b7222a;fill:none;stroke-width:3}.sb{stroke:#e08a1e;fill:none;stroke-width:2.4}text{font-family:Georgia,serif;font-size:15px}.lab{font-family:"Bebas Neue",Oswald,"Arial Narrow",sans-serif;letter-spacing:.06em;font-size:17px}.holler{font-family:"Bebas Neue",Oswald,"Arial Narrow",sans-serif;font-size:26px;letter-spacing:.04em;fill:#e08a1e;transform-box:fill-box;transform-origin:center}.pop{animation:pop 4s ease-in-out infinite;opacity:0}@keyframes pop{0%,58%{opacity:0;transform:translateY(10px) scale(.85) rotate(-7deg)}66%{opacity:1;transform:translateY(0) scale(1.12) rotate(-7deg)}72%{transform:translateY(0) scale(1) rotate(-7deg)}90%{opacity:1}100%{opacity:0;transform:translateY(-8px) scale(1) rotate(-7deg)}}.rider{animation:rider 7s linear infinite}@keyframes rider{0%{opacity:0}4%{opacity:1}96%{opacity:1}100%{opacity:0}}.draw{stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.6s ease-out both}@keyframes draw{to{stroke-dashoffset:0}}.slide{animation:slide .8s cubic-bezier(.2,.9,.3,1) both}@keyframes slide{0%{opacity:0;transform:translateX(-26px)}100%{opacity:1;transform:translateX(0)}}.throb{animation:throb 2.6s ease-in-out infinite}@keyframes throb{0%,100%{opacity:.35}50%{opacity:1}}@media (prefers-reduced-motion:reduce){*{animation:none!important;stroke-dashoffset:0!important}.pop,.rider{opacity:1}}@media (prefers-color-scheme:dark){.ink{fill:#f0e6d6} .mut{fill:#a6947c} .acc{fill:#ef4b4b}.s{stroke:#f0e6d6} .sm{stroke:#3a3128} .sa{stroke:#ef4b4b}.sb{stroke:#f0b04a} .holler{fill:#f0b04a}}</style><line x1="70" y1="350" x2="830" y2="350" class="s"/><line x1="70" y1="70" x2="70" y2="350" class="s"/><polyline points="70.0,315.0 71.9,315.0 73.8,315.0 75.7,315.0 77.6,315.0 79.5,315.0 81.4,315.0 83.3,315.0 85.2,315.0 87.1,315.0 89.0,315.0 90.9,315.0 92.8,315.0 94.7,315.0 96.6,315.0 98.5,315.0 100.4,315.0 102.3,315.0 104.2,315.0 106.1,315.0 108.0,315.0 109.9,315.0 111.8,314.9 113.7,314.9 115.6,314.9 117.5,314.9 119.4,314.9 121.3,314.9 123.2,314.9 125.1,314.9 127.0,314.9 128.9,314.9 130.8,314.9 132.7,314.9 134.6,314.9 136.5,314.9 138.4,314.9 140.3,314.8 142.2,314.8 144.1,314.8 146.0,314.8 147.9,314.8 149.8,314.8 151.7,314.8 153.6,314.8 155.5,314.8 157.4,314.8 159.3,314.8 161.2,314.7 163.1,314.7 165.0,314.7 166.9,314.7 168.8,314.7 170.7,314.7 172.6,314.7 174.5,314.7 176.4,314.7 178.3,314.6 180.2,314.6 182.1,314.6 184.0,314.6 185.9,314.6 187.8,314.6 189.7,314.6 191.6,314.5 193.5,314.5 195.4,314.5 197.3,314.5 199.2,314.5 201.1,314.5 203.0,314.5 204.9,314.4 206.8,314.4 208.7,314.4 210.6,314.4 212.5,314.4 214.4,314.4 216.3,314.3 218.2,314.3 220.1,314.3 222.0,314.3 223.9,314.3 225.8,314.2 227.7,314.2 229.6,314.2 231.5,314.2 233.4,314.2 235.3,314.1 237.2,314.1 239.1,314.1 241.0,314.1 242.9,314.1 244.8,314.0 246.7,314.0 248.6,314.0 250.5,314.0 252.4,313.9 254.3,313.9 256.2,313.9 258.1,313.9 260.0,313.9 261.9,313.8 263.8,313.8 265.7,313.8 267.6,313.8 269.5,313.7 271.4,313.7 273.3,313.7 275.2,313.6 277.1,313.6 279.0,313.6 280.9,313.6 282.8,313.5 284.7,313.5 286.6,313.5 288.5,313.5 290.4,313.4 292.3,313.4 294.2,313.4 296.1,313.3 298.0,313.3 299.9,313.3 301.8,313.2 303.7,313.2 305.6,313.2 307.5,313.2 309.4,313.1 311.3,313.1 313.2,313.1 315.1,313.0 317.0,313.0 318.9,313.0 320.8,312.9 322.7,312.9 324.6,312.9 326.5,312.8 328.4,312.8 330.3,312.7 332.2,312.7 334.1,312.7 336.0,312.6 337.9,312.6 339.8,312.6 341.7,312.5 343.6,312.5 345.5,312.4 347.4,312.4 349.3,312.4 351.2,312.3 353.1,312.3 355.0,312.2 356.9,312.2 358.8,312.2 360.7,312.1 362.6,312.1 364.5,312.0 366.4,312.0 368.3,311.9 370.2,311.9 372.1,311.9 374.0,311.8 375.9,311.8 377.8,311.7 379.7,311.7 381.6,311.6 383.5,311.6 385.4,311.5 387.3,311.5 389.2,311.4 391.1,311.4 393.0,311.3 394.9,311.3 396.8,311.2 398.7,311.2 400.6,311.1 402.5,311.1 404.4,311.0 406.3,311.0 408.2,310.9 410.1,310.9 412.0,310.8 413.9,310.8 415.8,310.7 417.7,310.6 419.6,310.6 421.5,310.5 423.4,310.5 425.3,310.4 427.2,310.3 429.1,310.3 431.0,310.2 432.9,310.2 434.8,310.1 436.7,310.0 438.6,310.0 440.5,309.9 442.4,309.8 444.3,309.8 446.2,309.7 448.1,309.7 450.0,309.6 451.9,309.5 453.8,309.4 455.7,309.4 457.6,309.3 459.5,309.2 461.4,309.2 463.3,309.1 465.2,309.0 467.1,309.0 469.0,308.9 470.9,308.8 472.8,308.7 474.7,308.6 476.6,308.6 478.5,308.5 480.4,308.4 482.3,308.3 484.2,308.3 486.1,308.2 488.0,308.1 489.9,308.0 491.8,307.9 493.7,307.8 495.6,307.8 497.5,307.7 499.4,307.6 501.3,307.5 503.2,307.4 505.1,307.3 507.0,307.2 508.9,307.1 510.8,307.0 512.7,306.9 514.6,306.8 516.5,306.7 518.4,306.7 520.3,306.6 522.2,306.5 524.1,306.4 526.0,306.2 527.9,306.1 529.8,306.0 531.7,305.9 533.6,305.8 535.5,305.7 537.4,305.6 539.3,305.5 541.2,305.4 543.1,305.3 545.0,305.2 546.9,305.0 548.8,304.9 550.7,304.8 552.6,304.7 554.5,304.6 556.4,304.4 558.3,304.3 560.2,304.2 562.1,304.1 564.0,303.9 565.9,303.8 567.8,303.7 569.7,303.5 571.6,303.4 573.5,303.3 575.4,303.1 577.3,303.0 579.2,302.9 581.1,302.7 583.0,302.6 584.9,302.4 586.8,302.3 588.7,302.1 590.6,302.0 592.5,301.8 594.4,301.6 596.3,301.5 598.2,301.3 600.1,301.2 602.0,301.0 603.9,300.8 605.8,300.6 607.7,300.5 609.6,300.3 611.5,300.1 613.4,299.9 615.3,299.8 617.2,299.6 619.1,299.4 621.0,299.2 622.9,299.0 624.8,298.8 626.7,298.6 628.6,298.4 630.5,298.2 632.4,298.0 634.3,297.7 636.2,297.5 638.1,297.3 640.0,297.1 641.9,296.9 643.8,296.6 645.7,296.4 647.6,296.1 649.5,295.9 651.4,295.7 653.3,295.4 655.2,295.1 657.1,294.9 659.0,294.6 660.9,294.3 662.8,294.1 664.7,293.8 666.6,293.5 668.5,293.2 670.4,292.9 672.3,292.6 674.2,292.3 676.1,292.0 678.0,291.7 679.9,291.3 681.8,291.0 683.7,290.7 685.6,290.3 687.5,290.0 689.4,289.6 691.3,289.2 693.2,288.9 695.1,288.5 697.0,288.1 698.9,287.7 700.8,287.2 702.7,286.8 704.6,286.4 706.5,285.9 708.4,285.5 710.3,285.0 712.2,284.6 714.1,284.1 716.0,283.6 717.9,283.0 719.8,282.5 721.7,282.0 723.6,281.4 725.5,280.8 727.4,280.2 729.3,279.6 731.2,279.0 733.1,278.4 735.0,277.7 736.9,277.0 738.8,276.3 740.7,275.6 742.6,274.8 744.5,274.0 746.4,273.2 748.3,272.4 750.2,271.5 752.1,270.6 754.0,269.7 755.9,268.7 757.8,267.7 759.7,266.7 761.6,265.6 763.5,264.4 765.4,263.2 767.3,262.0 769.2,260.7 771.1,259.3 773.0,257.9 774.9,256.4 776.8,254.8 778.7,253.1 780.6,251.3 782.5,249.4 784.4,247.4 786.3,245.3 788.2,243.0 790.1,240.5 792.0,237.9 793.9,235.1 795.8,232.0 797.7,228.7 799.6,225.0 801.5,221.0 803.4,216.5 805.3,211.6 807.2,206.0 809.1,199.7 811.0,192.5 812.9,184.1 814.8,174.1 816.7,162.1 818.6,147.2 820.5,127.9 822.4,101.9" class="sa draw"/><line x1="70" y1="315.0" x2="830" y2="315.0" class="sm"/><text x="62" y="319.0" text-anchor="end" class="mut">×1</text><line x1="70" y1="280.0" x2="830" y2="280.0" class="sm"/><text x="62" y="284.0" text-anchor="end" class="mut">×2</text><line x1="70" y1="210.0" x2="830" y2="210.0" class="sm"/><text x="62" y="214.0" text-anchor="end" class="mut">×4</text><line x1="70" y1="70.0" x2="830" y2="70.0" class="sm"/><text x="62" y="74.0" text-anchor="end" class="mut">×8</text><circle cx="450.0" cy="309.6" r="4.5" class="acc"/><text x="442.0" y="299.6" text-anchor="end" class="ink">0.5c → ×1.15</text><circle cx="754.0" cy="269.7" r="4.5" class="acc"/><text x="746.0" y="259.7" text-anchor="end" class="ink">0.9c → ×2.29</text><circle cx="822.4" cy="101.9" r="4.5" class="acc"/><text x="814.4" y="91.9" text-anchor="end" class="ink">0.99c → ×7.09</text><text x="70.0" y="372" text-anchor="middle" class="mut">0c</text><text x="260.0" y="372" text-anchor="middle" class="mut">0.25c</text><text x="450.0" y="372" text-anchor="middle" class="mut">0.5c</text><text x="640.0" y="372" text-anchor="middle" class="mut">0.75c</text><text x="830.0" y="372" text-anchor="middle" class="mut">1c</text><text x="70" y="52" class="lab ink">HOW MANY TIMES HEAVIER THE GOIN' GETS — γ = 1/√(1−v²/c²)</text></svg></div><figcaption>Gamma against speed. It sits at 1.000 for everything on the ladder below light, then leaves the page.</figcaption></figure>
+
+<p>At walking pace, γ is 1.0000000000000001. At half light speed it is 1.15. At 0.99c it
+is 7.09, and getting a two-tonne pickup to that speed takes
+1.09e+21 joules — 1.8 times everything the human
+race burned, in every form, for all purposes, in the year 2024<sup class="ref">[<a href="/goin-fast/sources/#energy-institute" title="Energy Institute, Statistical Review of World Energy 2024 — world primary energy about 620 exajoules">23</a>]</sup>.
+For one truck. To not quite get there.</p>
+
+<h2>Your watch runs slow and this is measured, not argued</h2>
+
+<p>The same γ says a moving clock ticks slow by that factor. It sounds like a story
+until you look at what it costs to ignore it.</p>
+
+<div class="box sum">
+<h3>GPS, which would not work otherwise</h3>
+<p>The satellites are doing about 3,874 metres a second, so their clocks lose
+7.2 microseconds a day to speed. They are also twenty thousand
+kilometres up where gravity is weaker, so they gain 45.9 microseconds
+a day to that<sup class="ref">[<a href="/goin-fast/sources/#ashby-gps" title="Neil Ashby, Relativity in the Global Positioning System, Living Reviews in Relativity 6:1 (2003)">20</a>]</sup>. Net: <b>+38.7 microseconds a day</b>, fast.</p>
+<p>A GPS fix is a light-travel-time measurement, so an error in the clock is an error in
+your position at 299,792,458 metres a second. 38.7 microseconds of drift is
+<b>11.6 kilometres</b> of wrong, and it is 11.6 kilometres more
+wrong every day. The satellites are built with their clocks deliberately set off-rate
+before launch so that they run correct once they are up there. The phone in your pocket
+is a working relativity experiment that gets checked by a hundred million people
+daily.</p>
+</div>
+
+<p>It has also been measured directly, the old-fashioned way. Hafele and Keating flew
+caesium clocks around the world on airliners in 1971 and brought them home reading
+different<sup class="ref">[<a href="/goin-fast/sources/#hafele-keating" title="Hafele &amp; Keating, Around-the-world atomic clocks, Science 177 (1972) 166–170">25</a>]</sup>. In 2010 the NIST group did it with a clock carried up
+one-third of a metre, and with an atom moving about ten metres a
+second<sup class="ref">[<a href="/goin-fast/sources/#chou-clocks" title="Chou, Hume, Rosenband &amp; Wineland, Optical clocks and relativity, Science 329 (2010) 1630–1633 — time dilation measured at 10 m/s and 33 cm of height">26</a>]</sup> — walking pace, and the effect showed.</p>
+
+<h2>What actually goes the speed limit</h2>
+
+<p>Light does, in vacuum. Anything with no mass does. Gravity does, and that has been
+checked: on 17 August 2017 two neutron stars collided, and the shiver in spacetime and
+the gamma rays from the same event arrived 1.7 seconds apart after 130 million years of
+travel<sup class="ref">[<a href="/goin-fast/sources/#gw170817" title="Abbott et al., Gravitational waves and gamma-rays from a binary neutron star merger: GW170817 and GRB 170817A, ApJL 848 L13 (2017)">21</a>]</sup>. Two signals, a hundred and thirty million years, under two
+seconds between them. The speeds agree to about a part in a thousand trillion.</p>
+
+<p>Everything with mass is stuck below. Not almost. Below. And the closer you get, the
+more the difference shows up as the clock slowing rather than the ground going by — go
+fast enough and a trip that takes a thousand years from the porch takes a year in the
+cab. The ceiling does not stop you crossing the galaxy. It only stops you coming home to
+anybody you knew.</p>
+<div class="prev-next"><a href="/goin-fast/orbit/">← Orbit</a><a href="/goin-fast/cheats/">Cheats →</a></div></main><footer class="foot"><div class="wrap"><p>Goin' Fast — twenty measured speeds and what each one costs. Text and diagrams by Nan, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; the code that builds them, <a href="https://github.com/NaNoBotCo/goin-fast">MIT</a>. Built 2026-09-22. Every figure on this site was computed from the formula shown beside it.</p><div class="fleet">More from NaNoBotCo: <a href="https://motdang.net/" title="city directory for Chiang Mai and Chiang Rai">Mot Dang</a> · <a href="https://nanobotco.github.io/mae-hong-son-loop/" title="motorcycling the 600 km loop out of Chiang Mai — curves counted, air measured">The Mae Hong Son Loop</a> · <a href="https://motdang.net/muay-thai/" title="the eight limbs, the thirty named techniques, the ceremony, and every gym on the map">Muay Thai</a> · <a href="https://motdang.net/roads/" title="the square of 1296, four rings, and what each one did to the city — counted from the map">Roads of Chiang Mai</a> · <a href="https://wichaa.net/" title="Lanna manuscripts, the amulet market, and the traditions around them">wichaa</a> · <a href="https://nanobotco.github.io/hand-poke/" title="28 traditions of marking skin by hand — the leg-tattoo zone of Burma, the Shan States and Lanna, counted">Hand Poke</a> · <a href="https://nanobotco.github.io/black-holes/" title="black holes modelled and drawn from the equations — generators, the past, present and future, the legends">Black Holes, Drawn</a> · <a href="https://nanobotco.github.io/quantum-computing/" title="the history and theory of quantum computing in plain words, with demos; refreshed weekly">Quantum Computing, plainly</a> · <a href="https://nanobotco.github.io/amulet-atlas/" title="amulets, charms and talismans worldwide">Amulet Atlas</a> · <a href="https://nanobotco.github.io/carolina-barbecue/" title="barbecue in North and South Carolina">Carolina Barbecue</a> · <a href="https://nanobotco.github.io/buffalo-wings/" title="the American chicken wing">Wing Country</a> · <a href="https://nanobotco.github.io/pink-box/" title="the American mom-and-pop donut shop">Pink Box</a> · <a href="https://nanobotco.github.io/basque-tables/" title="Basque dining rooms of California, Nevada and Idaho">Basque Tables</a> · <a href="https://nanobotco.github.io/pinot-noir/" title="pinot noir: the vine, the regions, the cellars">Pinot Country</a> · <a href="https://nanobotco.github.io/care-abroad/" title="treatment across borders, with published prices and their dates">Care Abroad</a> · <a href="https://nanobotco.github.io/thairoots/" title="a root dictionary of Thai, with a word decomposer">Thai Roots</a> · <a href="https://nanobotco.github.io/index/" title="every corpus, site and repository, counted">The index</a> · <a href="https://nanobotco.github.io/uptake/" title="a field manual on publishing for machines that copy">Uptake</a> · <a href="https://nanobotco.github.io/" title="the portal">NaNoBotCo</a> · <a href="https://hakfarang.net/" title="เรื่องเงิน วีซ่า และชีวิตกับแฟนฝรั่ง">ฮักฝรั่ง</a> · <a href="https://offrampt.net/" title="turning crypto into spendable local money, Thailand first">Offrampt</a></div><div class="support">Contact: Nan · <a href="mailto:nan@motdang.net">nan@motdang.net</a> · Sponsor: <a href="https://www.patreon.com/nanobotco" rel="noopener" target="_blank">Patreon</a> · <a href="https://ko-fi.com/defiantchiangmai" rel="noopener" target="_blank">Ko-fi</a></div><div class="support maker">Made by <a href="https://hongdam.net/" rel="noopener">Hongdam</a>, Chiang Rai.</div></div></footer></body></html>
