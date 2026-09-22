@@ -20,7 +20,8 @@ MPH = 0.44704                        # m/s per mph, exact
 
 
 def svg(w: int, h: int, body: str, title: str, desc: str = "") -> str:
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" '
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" '
+            f'xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {w} {h}" '
             f'role="img" aria-labelledby="t d">'
             f'<title id="t">{title}</title><desc id="d">{desc or title}</desc>'
             f'<style>'
@@ -219,12 +220,15 @@ def cannonball() -> str:
             pts.append((cx + x * scale, cy - y * scale))
             if len(pts) > 2 and x > 0 and abs(math.atan2(x, y)) < 0.02 and len(pts) > 100:
                 break
-        d = " ".join(f"{px:.1f},{py:.1f}" for px, py in pts[::6])
+        # a <path>, not a <polyline>: <mpath> can only follow a path, and the ball
+        # that rides the closed orbit follows this one
+        xy = pts[::6]
+        d = "M " + " L ".join(f"{px:.1f},{py:.1f}" for px, py in xy)
         ident = ' id="orbit"' if cls == "sa" else ""
-        b.append(f'<polyline points="{d}" class="{cls}"{ident}/>')
+        b.append(f'<path d="{d}" class="{cls}"{ident}/>')
     # a ball ridin' the closed orbit, hollerin' the whole way round
     ride = ('<animateMotion dur="9s" repeatCount="indefinite">'
-            '<mpath href="#orbit"/></animateMotion>')
+            '<mpath href="#orbit" xlink:href="#orbit"/></animateMotion>')
     b.append(f'<g class="rider"><circle r="6" class="acc"/>{ride}</g>')
     b.append(f'<g class="rider"><text x="14" y="-12" class="holler">WHOO-EEE!</text>{ride}</g>')
     b.append(f'<circle cx="{cx}" cy="{cy-Rpx-top*scale:.1f}" r="5" class="acc"/>')
