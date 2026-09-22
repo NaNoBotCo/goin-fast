@@ -812,6 +812,9 @@ to {URL}/. Code: MIT.
 
     (SITE / ".basepath").write_text(BASE, encoding="utf-8")
 
+    # the roster into the machine files: fleet.json, llms.txt, robots.txt, humans.txt
+    fleet.decorate(SITE, "goin-fast")
+
     (SITE / "icon.svg").write_text(
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
         '<rect width="64" height="64" fill="#b7222a"/>'
