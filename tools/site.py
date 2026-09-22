@@ -355,7 +355,7 @@ two hundred tonnes of air, shoved.</p>
 
 <p>The force it takes goes with the <em>square</em> of the speed:</p>
 
-<p class="pull">F = ½ · ρ · v² · C<sub>d</sub> · A</p>
+<p class="pull eq">F = ½ · ρ · v² · C<sub>d</sub> · A</p>
 
 <p>ρ is how heavy the air is, v is how fast you are goin', A is how big a hole you are
 punchin', and C<sub>d</sub> is a number for how ugly the shape is — about 0.40 for a
@@ -438,7 +438,7 @@ lands at all. It comes around and hits you in the back of the head.</p>
 
 <p>Set the fall equal to the curve and the speed drops out of the arithmetic:</p>
 
-<p class="pull">v = √(GM / r)</p>
+<p class="pull eq">v = √(GM / r)</p>
 
 <p>G is the constant of gravity{ref("codata")}, M is the mass of the Earth, r is how far
 you are from the middle of it — not from the ground, from the <em>middle</em>. At the
@@ -455,7 +455,7 @@ sits at 35,786 km and takes exactly a day, which is the whole point of it.</p>
 
 <p>Go faster still and the loop opens up. Put in a factor of two under the root:</p>
 
-<p class="pull">v = √(2GM / r) = {si(F["escape_earth"])} at the ground</p>
+<p class="pull eq">v = √(2GM / r) = {si(F["escape_earth"])} at the ground</p>
 
 <p>Throw somethin' that fast and it does not come back — no engine after the throw, no
 fuel, nothing. It coasts out forever, slowin' the whole way, never quite stopping. That
@@ -509,7 +509,7 @@ of it being true.</p>
 and that is near enough correct that the highway patrol uses it. It is not exactly
 correct. The exact version is:</p>
 
-<p class="pull">sum = (u + v) / (1 + uv/c²)</p>
+<p class="pull eq">sum = (u + v) / (1 + uv/c²)</p>
 
 <p>At seventy miles an hour that correction is a few parts in a quadrillion — the
 difference does not show up until a good deal past the last rung on the ladder. Take
@@ -529,7 +529,7 @@ arrive.</p>
 <p>Into the γ — gamma — a single number that measures how much the world has stopped
 behaving arithmetically:</p>
 
-<p class="pull">γ = 1 / √(1 − v²/c²)</p>
+<p class="pull eq">γ = 1 / √(1 − v²/c²)</p>
 
 {fig("gamma.svg", "Gamma against speed. It sits at 1.000 for everything on the ladder "
      "below light, then leaves the page.")}
