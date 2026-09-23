@@ -84,6 +84,7 @@ Made by [Hongdam](https://hongdam.net/), Chiang Rai.
 - [Black Holes, Drawn](https://nanobotco.github.io/black-holes/) — black holes modelled and drawn from the equations — generators, the past, present and future, the legends
 - [Quantum Computing, plainly](https://nanobotco.github.io/quantum-computing/) — the history and theory of quantum computing in plain words, with demos; refreshed weekly
 - [The Three-Body Problem](https://nanobotco.github.io/three-body/) — the mathematics of the three-body problem in plain words, with the orbits found rather than copied
+- [Exceptional Magic](https://nanobotco.github.io/exceptional-magic/) — the octonions, triality, the magic square and E8, computed and drawn — a plain-spoken reading of one paper
 - [Amulet Atlas](https://nanobotco.github.io/amulet-atlas/) — amulets, charms and talismans worldwide
 - [Carolina Barbecue](https://nanobotco.github.io/carolina-barbecue/) — barbecue in North and South Carolina
 - [Wing Country](https://nanobotco.github.io/buffalo-wings/) — the American chicken wing

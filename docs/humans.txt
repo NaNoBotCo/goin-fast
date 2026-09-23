@@ -4,7 +4,7 @@ Contact: nan@motdang.net
 
 /* the site */
 Static HTML, no framework. Diagrams drawn by tools/figures.py from the formulas they show.
-Last built: 2026-09-22
+Last built: 2026-09-23
 
 # — roster of sibling sites, generated from data/fleet.json —
 /* STUDIO */
@@ -22,6 +22,7 @@ Hand Poke — https://nanobotco.github.io/hand-poke/
 Black Holes, Drawn — https://nanobotco.github.io/black-holes/
 Quantum Computing, plainly — https://nanobotco.github.io/quantum-computing/
 The Three-Body Problem — https://nanobotco.github.io/three-body/
+Exceptional Magic — https://nanobotco.github.io/exceptional-magic/
 Amulet Atlas — https://nanobotco.github.io/amulet-atlas/
 Carolina Barbecue — https://nanobotco.github.io/carolina-barbecue/
 Wing Country — https://nanobotco.github.io/buffalo-wings/
