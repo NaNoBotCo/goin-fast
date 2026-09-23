@@ -123,7 +123,7 @@ def page(slug: str, title: str, desc: str, body: str, prev_next: str = "",
         f'Built {TODAY}. Every figure on this site was computed from the formula '
         f'shown beside it.</p>'
         f'{fleet.row_html("goin-fast")}'
-        f'{fleet.support_html()}{fleet.maker_html()}'
+        f'{fleet.support_html(self_id="goin-fast")}{fleet.maker_html()}'
         f'</div></footer></body></html>')
     dest = SITE / out if out else (SITE / slug / "index.html" if slug else SITE / "index.html")
     dest.parent.mkdir(parents=True, exist_ok=True)
