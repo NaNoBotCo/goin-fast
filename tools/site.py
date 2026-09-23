@@ -98,7 +98,7 @@ def page(slug: str, title: str, desc: str, body: str, prev_next: str = "",
     nav = "".join(bits)
     canon = f"{URL}/{slug}" if slug else f"{URL}/"
     head = (
-        f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        f'<!doctype html><html lang="en" translate="no" class="notranslate"><head><meta charset="utf-8">'
         f'<meta name="viewport" content="width=device-width,initial-scale=1">'
         f'<title>{html.escape(title)}</title>'
         f'<meta name="description" content="{html.escape(desc)}">'
@@ -109,7 +109,11 @@ def page(slug: str, title: str, desc: str, body: str, prev_next: str = "",
         f'<meta property="og:type" content="article">'
         f'<meta property="og:url" content="{canon}">'
         f'<meta name="author" content="Nan · hongdam.net">'
-        f'<style>{CSS}</style></head><body>'
+        f'<style>{CSS}</style>'
+        '<meta name="google" content="notranslate">'
+        '<meta name="robots" content="notranslate">'
+        '<script>if(/[.]translate[.]goog$/.test(location.hostname))location.replace("https://"+location.hostname.slice(0,-15).replace(/--/g,"~").replace(/-/g,".").replace(/~/g,"-")+location.pathname+location.search.replace(/([?&])_x_tr_[^&]*/g,"$1").replace(/[?&]+$/,"").replace(/[?]&+/,"?")+location.hash)</script>'
+        '</head><body>'
         f'<header class="top"><div class="wrap">'
         f'<a class="mark" href="{u}">GOIN\' <b>FAST</b></a>'
         f'<nav class="site">{nav}</nav></div></header><main class="wrap">')
