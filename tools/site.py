@@ -38,6 +38,9 @@ SRC = {**LADDER["sources"], **EXTRA["sources"]}
 ORDER = list(LADDER["sources"]) + list(EXTRA["sources"])
 NUM = {k: i + 1 for i, k in enumerate(ORDER)}
 
+CARD_ALT = ("Goin' Fast: twenty speeds drawn as bars on a log axis, from a fingernail "
+            "a year to light")
+
 MPH = 0.44704
 C = F["c"]
 
@@ -106,8 +109,16 @@ def page(slug: str, title: str, desc: str, body: str, prev_next: str = "",
         f'<link rel="icon" href="{u}icon.svg" type="image/svg+xml">'
         f'<meta property="og:title" content="{html.escape(title)}">'
         f'<meta property="og:description" content="{html.escape(desc)}">'
-        f'<meta property="og:type" content="article">'
+        f'<meta property="og:type" content="{"article" if slug else "website"}">'
+        f'<meta property="og:site_name" content="Goin\' Fast">'
         f'<meta property="og:url" content="{canon}">'
+        f'<meta property="og:image" content="{URL}/card.jpg">'
+        f'<meta property="og:image:type" content="image/jpeg">'
+        f'<meta property="og:image:width" content="1200">'
+        f'<meta property="og:image:height" content="630">'
+        f'<meta property="og:image:alt" content="{html.escape(CARD_ALT)}">'
+        f'<meta name="twitter:card" content="summary_large_image">'
+        f'<meta name="twitter:image" content="{URL}/card.jpg">'
         f'<meta name="author" content="Nan · hongdam.net">'
         f'<style>{CSS}</style>'
         '<meta name="google" content="notranslate">'
@@ -818,6 +829,8 @@ to {URL}/. Code: MIT.
 
     # the roster into the machine files: fleet.json, llms.txt, robots.txt, humans.txt
     fleet.decorate(SITE, "goin-fast")
+
+    shutil.copy2(ROOT / "data" / "card.jpg", SITE / "card.jpg")
 
     (SITE / "icon.svg").write_text(
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
