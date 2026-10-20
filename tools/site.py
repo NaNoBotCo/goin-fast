@@ -21,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fleet                                                   # noqa: E402
+import ogcards                                                 # noqa: E402
 from css import CSS                                            # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -142,7 +143,10 @@ def page(slug: str, title: str, desc: str, body: str, prev_next: str = "",
         f'</div></footer></body></html>')
     dest = SITE / out if out else (SITE / slug / "index.html" if slug else SITE / "index.html")
     dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(head + body + foot, encoding="utf-8")
+    page_html = head + body + foot
+    if dest.suffix == ".html":
+        page_html = ogcards.apply(page_html, dest.relative_to(SITE).as_posix(), URL)
+    dest.write_text(page_html, encoding="utf-8")
 
 
 def pn(prev: tuple[str, str] | None, nxt: tuple[str, str] | None) -> str:
@@ -844,6 +848,7 @@ def main() -> None:
     if SITE.exists():
         shutil.rmtree(SITE)
     SITE.mkdir(parents=True)
+    ogcards.copy(ROOT, SITE)
     p_index(); p_ladder(); p_sound(); p_drag(); p_orbit(); p_limit(); p_cheats()
     p_reckoner(); p_sources()
     shutil.copytree(ROOT / "build" / "img", SITE / "img")
