@@ -1,0 +1,34 @@
+{
+ "cheats/": {
+  "alt": "Card: Five things that beat light and break no rule, Goin' Fast",
+  "image": "og/cheats.jpg"
+ },
+ "drag/": {
+  "alt": "Card: The air tax, Goin' Fast",
+  "image": "og/drag.jpg"
+ },
+ "ladder/": {
+  "alt": "Card: The ladder of speed, Goin' Fast",
+  "image": "og/ladder.jpg"
+ },
+ "limit/": {
+  "alt": "Card: The ceilin', Goin' Fast",
+  "image": "og/limit.jpg"
+ },
+ "orbit/": {
+  "alt": "Card: Orbit is sideways, Goin' Fast",
+  "image": "og/orbit.jpg"
+ },
+ "reckoner/": {
+  "alt": "Card: The reckoner, Goin' Fast",
+  "image": "og/reckoner.jpg"
+ },
+ "sound/": {
+  "alt": "Card: The sound barrier, and the whip that beat it, Goin' Fast",
+  "image": "og/sound.jpg"
+ },
+ "sources/": {
+  "alt": "Card: Sources, Goin' Fast",
+  "image": "og/sources.jpg"
+ }
+}
